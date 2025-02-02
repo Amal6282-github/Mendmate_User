@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Homepagesmallcard extends StatelessWidget {
-  final SvgPicture serviceicon;
+class Viewallcategorypagecard extends StatelessWidget {
+  final ImageProvider serviceimg;
   final String title;
-  const Homepagesmallcard(
-      {super.key, required this.title, required this.serviceicon});
+  const Viewallcategorypagecard(
+      {super.key, required this.title, required this.serviceimg});
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +24,19 @@ class Homepagesmallcard extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-                child: Container(
-              child: Container(height: 45, width: 45, child: serviceicon),
+                child: ClipRRect(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15), topRight: Radius.circular(15)),
+              child: Container(
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: serviceimg,
+                          fit: BoxFit.cover,
+                          colorFilter: ColorFilter.mode(
+                            Colors.black
+                                .withOpacity(0.9), // Adjust transparency
+                            BlendMode.dstATop,
+                          )))),
             )),
             Container(
               decoration: BoxDecoration(

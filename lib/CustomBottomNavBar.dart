@@ -3,25 +3,25 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:project_mendmate_user/BookingScreen.dart';
-import 'package:project_mendmate_user/ChatsScreen.dart';
-import 'package:project_mendmate_user/ProfileScreen.dart';
+import 'package:project_mendmate_user/chatscreen.dart';
 import 'package:project_mendmate_user/home_page.dart';
+import 'package:project_mendmate_user/profilescreen.dart';
 
-class CustomBottomNavBAr extends StatefulWidget {
-  const CustomBottomNavBAr({super.key});
+class Custombottomnavbar extends StatefulWidget {
+  const Custombottomnavbar({super.key});
 
   @override
-  State<CustomBottomNavBAr> createState() => _CustomBottomNavBArState();
+  State<Custombottomnavbar> createState() => _CustomBottomNavBArState();
 }
 
-class _CustomBottomNavBArState extends State<CustomBottomNavBAr> {
+class _CustomBottomNavBArState extends State<Custombottomnavbar> {
   int _selectedIndex = 0; // Track selected index
 
   // Screens for each tab
   static final List<Widget> _pages = <Widget>[
     HomePage(),
     Bookingscreen(),
-    Chatsscreen(),
+    Chatscreen(),
     Profilescreen()
   ];
 

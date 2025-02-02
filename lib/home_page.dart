@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:marquee/marquee.dart';
-import 'package:project_mendmate_user/BookingFilterPage.dart';
-import 'package:project_mendmate_user/CategoriesScreen.dart';
-import 'package:project_mendmate_user/HomePageBigCard.dart';
-import 'package:project_mendmate_user/HomePageSmallCard.dart';
+import 'package:project_mendmate_user/bookingfilterpage.dart';
+import 'package:project_mendmate_user/categoriescreen.dart';
+import 'package:project_mendmate_user/homepagebigcard.dart';
+import 'package:project_mendmate_user/homepagesmallcard.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -135,7 +135,7 @@ class HomePage extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => Categoriesscreen(),
+                                builder: (context) => Categoriescreen(),
                               ));
                         },
                         child: Text(
@@ -159,13 +159,17 @@ class HomePage extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Bookingfilterpage(),
+                                  builder: (context) => Bookingfilterpage(
+                                    catergoryname: 'Electrician',
+                                    serviceimg: SvgPicture.asset(
+                                        'assets/plug-circle-bolt.svg'),
+                                  ),
                                 ));
                           },
                           child: Homepagesmallcard(
                             title: 'Electritian',
-                            serviceimg:
-                                AssetImage('assets/Ravinia_Electric.png.webp'),
+                            serviceicon:
+                                SvgPicture.asset('assets/plug-circle-bolt.svg'),
                           ),
                         ),
                         GestureDetector(
@@ -173,13 +177,17 @@ class HomePage extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Bookingfilterpage(),
+                                  builder: (context) => Bookingfilterpage(
+                                    catergoryname: 'Security',
+                                    serviceimg:
+                                        SvgPicture.asset('assets/security.svg'),
+                                  ),
                                 ));
                           },
                           child: Homepagesmallcard(
                             title: 'Security',
-                            serviceimg: AssetImage(
-                                'assets/Depositphotos_282950500_S.jpg'),
+                            serviceicon:
+                                SvgPicture.asset('assets/security.svg'),
                           ),
                         ),
                         GestureDetector(
@@ -187,13 +195,16 @@ class HomePage extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Bookingfilterpage(),
+                                  builder: (context) => Bookingfilterpage(
+                                    catergoryname: 'Painting',
+                                    serviceimg: SvgPicture.asset(
+                                        'assets/carpentry.svg'),
+                                  ),
                                 ));
                           },
                           child: Homepagesmallcard(
                             title: 'Painting',
-                            serviceimg: AssetImage(
-                                'assets/Contractor-Recommendation-1536x1024.jpg.webp'),
+                            serviceicon: SvgPicture.asset('assets/painter.svg'),
                           ),
                         ),
                         GestureDetector(
@@ -201,12 +212,16 @@ class HomePage extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Bookingfilterpage(),
+                                  builder: (context) => Bookingfilterpage(
+                                    catergoryname: 'Plumbing',
+                                    serviceimg:
+                                        SvgPicture.asset('assets/plumber.svg'),
+                                  ),
                                 ));
                           },
                           child: Homepagesmallcard(
                             title: 'Plumber',
-                            serviceimg: AssetImage('assets/3-250x250.webp'),
+                            serviceicon: SvgPicture.asset('assets/plumber.svg'),
                           ),
                         ),
                         GestureDetector(
@@ -214,27 +229,34 @@ class HomePage extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Bookingfilterpage(),
+                                  builder: (context) => Bookingfilterpage(
+                                    catergoryname: 'Carpentry',
+                                    serviceimg: SvgPicture.asset(
+                                        'assets/carpentry.svg'),
+                                  ),
                                 ));
                           },
                           child: Homepagesmallcard(
-                            title: 'Carpentry',
-                            serviceimg: AssetImage(
-                                'assets/When-can-I-return-to-dusty-environments-after-LASIK-Dr-Matthew-Russell-VSON-Laser-Vision-Specialists-Brisbane.webp'),
-                          ),
+                              title: 'Carpentry',
+                              serviceicon:
+                                  SvgPicture.asset('assets/carpentry.svg')),
                         ),
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Bookingfilterpage(),
+                                  builder: (context) => Bookingfilterpage(
+                                    catergoryname: 'Cieling ',
+                                    serviceimg: SvgPicture.asset(
+                                        'assets/people-roof.svg'),
+                                  ),
                                 ));
                           },
                           child: Homepagesmallcard(
                             title: 'Cieling',
-                            serviceimg:
-                                AssetImage('assets/pop-false-ceiling-work.jpg'),
+                            serviceicon:
+                                SvgPicture.asset('assets/people-roof.svg'),
                           ),
                         ),
                       ]),
@@ -278,92 +300,91 @@ class HomePage extends StatelessWidget {
                           workerName: 'john dao',
                           serviceimage1:
                               AssetImage('assets/Ravinia_Electric.png.webp'),
-                          workerimg: AssetImage(
-                              'assets/Depositphotos_282950500_S.jpg'),
+                          workerimg:
+                              AssetImage('assets/no-profile-picture-15257.png'),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Homepagebigcard(
-                          rating: 5,
-                          serviceName: 'Electrical work',
-                          workerName: 'john dao',
-                          serviceimage1:
-                              AssetImage('assets/Ravinia_Electric.png.webp'),
-                          workerimg: AssetImage(
-                              'assets/Depositphotos_282950500_S.jpg'),
+                          rating: 3,
+                          serviceName: 'Plumbing Work',
+                          workerName: 'David james',
+                          serviceimage1: AssetImage('assets/3-250x250.webp'),
+                          workerimg:
+                              AssetImage('assets/no-profile-picture-15257.png'),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Homepagebigcard(
-                          rating: 5,
-                          serviceName: 'Electrical work',
-                          workerName: 'john dao',
+                          rating: 1.5,
+                          serviceName: 'Cieling Work',
+                          workerName: 'Thomas antony',
                           serviceimage1:
-                              AssetImage('assets/Ravinia_Electric.png.webp'),
-                          workerimg: AssetImage(
-                              'assets/Depositphotos_282950500_S.jpg'),
+                              AssetImage('assets/pop-false-ceiling-work.jpg'),
+                          workerimg:
+                              AssetImage('assets/no-profile-picture-15257.png'),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Homepagebigcard(
-                          rating: 5,
-                          serviceName: 'Electrical work',
-                          workerName: 'john dao',
-                          serviceimage1:
-                              AssetImage('assets/Ravinia_Electric.png.webp'),
-                          workerimg: AssetImage(
+                          rating: 3.5,
+                          serviceName: 'CCTV Fixing',
+                          workerName: 'Stephen Menon',
+                          serviceimage1: AssetImage(
                               'assets/Depositphotos_282950500_S.jpg'),
+                          workerimg:
+                              AssetImage('assets/no-profile-picture-15257.png'),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Homepagebigcard(
-                          rating: 5,
-                          serviceName: 'Electrical work',
-                          workerName: 'john dao',
+                          rating: 4.4,
+                          serviceName: 'Carpentry Work',
+                          workerName: 'Varuhn John',
                           serviceimage1:
-                              AssetImage('assets/Ravinia_Electric.png.webp'),
-                          workerimg: AssetImage(
-                              'assets/Depositphotos_282950500_S.jpg'),
+                              AssetImage('assets/laminaat-leggen-3.jpg'),
+                          workerimg:
+                              AssetImage('assets/no-profile-picture-15257.png'),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Homepagebigcard(
-                          rating: 5,
-                          serviceName: 'Electrical work',
+                          rating: 2.8,
+                          serviceName: 'CCTV Fixing',
                           workerName: 'john dao',
-                          serviceimage1:
-                              AssetImage('assets/Ravinia_Electric.png.webp'),
-                          workerimg: AssetImage(
-                              'assets/Depositphotos_282950500_S.jpg'),
+                          serviceimage1: AssetImage(
+                              'assets/electrician-expertly-fixing-cctv-camera-generative-ai_431161-22009.jpg'),
+                          workerimg:
+                              AssetImage('assets/no-profile-picture-15257.png'),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Homepagebigcard(
-                          rating: 5,
+                          rating: 2.3,
                           serviceName: 'Electrical work',
-                          workerName: 'john dao',
+                          workerName: 'Thomas mathew',
                           serviceimage1:
                               AssetImage('assets/Ravinia_Electric.png.webp'),
-                          workerimg: AssetImage(
-                              'assets/Depositphotos_282950500_S.jpg'),
+                          workerimg:
+                              AssetImage('assets/no-profile-picture-15257.png'),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Homepagebigcard(
-                          rating: 5,
-                          serviceName: 'Electrical work',
-                          workerName: 'john dao',
-                          serviceimage1:
-                              AssetImage('assets/Ravinia_Electric.png.webp'),
-                          workerimg: AssetImage(
-                              'assets/Depositphotos_282950500_S.jpg'),
+                          rating: 4.3,
+                          serviceName: 'Painting Work',
+                          workerName: 'Harsh john david',
+                          serviceimage1: AssetImage(
+                              'assets/Contractor-Recommendation-1536x1024.jpg.webp'),
+                          workerimg:
+                              AssetImage('assets/no-profile-picture-15257.png'),
                         ),
                       ),
                     ],

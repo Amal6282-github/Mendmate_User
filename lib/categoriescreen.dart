@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:project_mendmate_user/BookingFilterPage.dart';
-import 'package:project_mendmate_user/HomePageSmallCard.dart';
+import 'package:project_mendmate_user/bookingfilterpage.dart';
+import 'package:project_mendmate_user/viewallcategorypagecard.dart';
 
-class Categoriesscreen extends StatelessWidget {
-  const Categoriesscreen({super.key});
+class Categoriescreen extends StatelessWidget {
+  const Categoriescreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +37,13 @@ class Categoriesscreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Bookingfilterpage(),
+                        builder: (context) => Bookingfilterpage(
+                          catergoryname: 'Electrician',
+                          serviceimg: SvgPicture.asset('assets/carpentry.svg'),
+                        ),
                       ));
                 },
-                child: Homepagesmallcard(
+                child: Viewallcategorypagecard(
                   title: 'Electritian',
                   serviceimg: AssetImage('assets/Ravinia_Electric.png.webp'),
                 ),
@@ -49,10 +53,13 @@ class Categoriesscreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Bookingfilterpage(),
+                        builder: (context) => Bookingfilterpage(
+                          catergoryname: 'Security',
+                          serviceimg: SvgPicture.asset('assets/carpentry.svg'),
+                        ),
                       ));
                 },
-                child: Homepagesmallcard(
+                child: Viewallcategorypagecard(
                   title: 'Security',
                   serviceimg:
                       AssetImage('assets/Depositphotos_282950500_S.jpg'),
@@ -63,10 +70,13 @@ class Categoriesscreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Bookingfilterpage(),
+                        builder: (context) => Bookingfilterpage(
+                          catergoryname: 'Painting',
+                          serviceimg: SvgPicture.asset('assets/painter.svg'),
+                        ),
                       ));
                 },
-                child: Homepagesmallcard(
+                child: Viewallcategorypagecard(
                   title: 'Painting',
                   serviceimg: AssetImage(
                       'assets/Contractor-Recommendation-1536x1024.jpg.webp'),
@@ -77,10 +87,13 @@ class Categoriesscreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Bookingfilterpage(),
+                        builder: (context) => Bookingfilterpage(
+                          catergoryname: 'Plumber',
+                          serviceimg: SvgPicture.asset('assets/plumber.svg'),
+                        ),
                       ));
                 },
-                child: Homepagesmallcard(
+                child: Viewallcategorypagecard(
                   title: 'Plumber',
                   serviceimg: AssetImage('assets/3-250x250.webp'),
                 ),
@@ -90,10 +103,13 @@ class Categoriesscreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Bookingfilterpage(),
+                        builder: (context) => Bookingfilterpage(
+                          catergoryname: 'Carpentry',
+                          serviceimg: SvgPicture.asset('assets/carpentry.svg'),
+                        ),
                       ));
                 },
-                child: Homepagesmallcard(
+                child: Viewallcategorypagecard(
                   title: 'Carpentry',
                   serviceimg: AssetImage(
                       'assets/When-can-I-return-to-dusty-environments-after-LASIK-Dr-Matthew-Russell-VSON-Laser-Vision-Specialists-Brisbane.webp'),
@@ -104,10 +120,13 @@ class Categoriesscreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Bookingfilterpage(),
+                        builder: (context) => Bookingfilterpage(
+                          catergoryname: 'Cieling',
+                          serviceimg: SvgPicture.asset('assets/carpentry.svg'),
+                        ),
                       ));
                 },
-                child: Homepagesmallcard(
+                child: Viewallcategorypagecard(
                   title: 'Cieling',
                   serviceimg: AssetImage('assets/pop-false-ceiling-work.jpg'),
                 ),
@@ -117,10 +136,13 @@ class Categoriesscreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Bookingfilterpage(),
+                        builder: (context) => Bookingfilterpage(
+                          catergoryname: 'Electrician',
+                          serviceimg: SvgPicture.asset('assets/painter.svg'),
+                        ),
                       ));
                 },
-                child: Homepagesmallcard(
+                child: Viewallcategorypagecard(
                   title: 'Electritian',
                   serviceimg: AssetImage('assets/Ravinia_Electric.png.webp'),
                 ),
@@ -130,10 +152,13 @@ class Categoriesscreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Bookingfilterpage(),
+                        builder: (context) => Bookingfilterpage(
+                          catergoryname: 'Security',
+                          serviceimg: SvgPicture.asset('assets/painter.svg'),
+                        ),
                       ));
                 },
-                child: Homepagesmallcard(
+                child: Viewallcategorypagecard(
                   title: 'Security',
                   serviceimg:
                       AssetImage('assets/Depositphotos_282950500_S.jpg'),
