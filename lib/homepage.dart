@@ -48,9 +48,7 @@ class Homepage extends StatelessWidget {
                                             'assets/marker.svg')),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 10),
-                                      child: Expanded(
-                                        child: SizedBox(),
-                                      ),
+                                      child: SizedBox(),
                                     ),
                                     Expanded(
                                         child: Padding(
