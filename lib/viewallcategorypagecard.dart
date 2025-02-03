@@ -12,6 +12,8 @@ class Viewallcategorypagecard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(

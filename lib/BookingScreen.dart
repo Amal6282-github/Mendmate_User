@@ -5,8 +5,15 @@ class Bookingscreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Color(0xffFFFFFF),
-    );
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Color(0xff3D56A2),
+        ),
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          color: Colors.white,
+          child: Column(),
+        ));
   }
 }

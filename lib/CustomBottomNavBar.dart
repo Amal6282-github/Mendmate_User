@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:project_mendmate_user/BookingScreen.dart';
 import 'package:project_mendmate_user/chatscreen.dart';
-import 'package:project_mendmate_user/home_page.dart';
+import 'package:project_mendmate_user/homepage.dart';
 import 'package:project_mendmate_user/profilescreen.dart';
 
 class Custombottomnavbar extends StatefulWidget {
@@ -19,7 +19,7 @@ class _CustomBottomNavBArState extends State<Custombottomnavbar> {
 
   // Screens for each tab
   static final List<Widget> _pages = <Widget>[
-    HomePage(),
+    Homepage(),
     Bookingscreen(),
     Chatscreen(),
     Profilescreen()

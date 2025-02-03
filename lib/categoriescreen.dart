@@ -22,9 +22,12 @@ class Categoriescreen extends StatelessWidget {
               fontSize: 17, fontWeight: FontWeight.w500, color: Colors.white),
           'Category',
         ),
-        backgroundColor: Color(0xff7879CA),
+        backgroundColor: Color(0xff3D56A2),
       ),
-      body: Expanded(
+      body: Container(
+        color: Colors.white,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: GridView.count(
