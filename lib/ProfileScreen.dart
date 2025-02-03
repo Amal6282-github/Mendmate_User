@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_mendmate_user/editprofilescreen.dart';
 
 class Profilescreen extends StatelessWidget {
   const Profilescreen({super.key});
@@ -23,16 +24,19 @@ class Profilescreen extends StatelessWidget {
             scrollDirection: Axis.vertical,
             child: Column(
               children: [
-                _buildProfileHeader(),
+                _buildProfileHeader(context),
                 SizedBox(height: 20),
                 _buildSectionTitle("GENERAL"),
-                _buildMenuItem(Icons.lock, "Change Password"),
-                _buildMenuItem(Icons.favorite_border, "Favourite Service"),
-                _buildMenuItem(Icons.star_border, "Rate Us"),
+                _buildMenuItem(Icons.lock, "Change Password", context),
+                _buildMenuItem(
+                    Icons.favorite_border, "Favourite Service", context),
+                _buildMenuItem(Icons.star_border, "Rate Us", context),
                 _buildSectionTitle("ABOUT APP"),
-                _buildMenuItem(Icons.privacy_tip_outlined, "Privacy Policy"),
-                _buildMenuItem(Icons.article_outlined, "Terms & Conditions"),
-                _buildMenuItem(Icons.help_outline, "Help Support"),
+                _buildMenuItem(
+                    Icons.privacy_tip_outlined, "Privacy Policy", context),
+                _buildMenuItem(
+                    Icons.article_outlined, "Terms & Conditions", context),
+                _buildMenuItem(Icons.help_outline, "Help Support", context),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   child: ElevatedButton(
@@ -56,7 +60,7 @@ class Profilescreen extends StatelessWidget {
         ));
   }
 
-  Widget _buildProfileHeader() {
+  Widget _buildProfileHeader(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(10),
       alignment: Alignment.center,
@@ -75,12 +79,29 @@ class Profilescreen extends StatelessWidget {
                         'https://randomuser.me/api/portraits/men/85.jpg') // Change this to NetworkImage if needed
                     ),
                 Positioned(
-                  bottom: 0,
-                  right: 0,
-                  child: CircleAvatar(
-                    backgroundColor: Color(0xff3D56A2),
-                    radius: 18,
-                    child: Icon(Icons.edit, color: Colors.white, size: 18),
+                  bottom: -3,
+                  right: -3,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Editprofilescreen()));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.white, // Border color
+                          width: 3.0, // Border width
+                        ),
+                      ),
+                      child: CircleAvatar(
+                        backgroundColor: Color(0xff3D56A2),
+                        radius: 18,
+                        child: Icon(Icons.edit, color: Colors.white, size: 18),
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -132,8 +153,12 @@ class Profilescreen extends StatelessWidget {
   }
 
   /// Menu Item Widget (Each Row Item)
-  Widget _buildMenuItem(IconData icon, String title) {
+  Widget _buildMenuItem(IconData icon, String title, BuildContext context) {
     return ListTile(
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context1) => Editprofilescreen()));
+      },
       leading: Icon(icon, color: Color(0xff6C757D)),
       title: Text(title,
           style: GoogleFonts.workSans(
@@ -141,9 +166,6 @@ class Profilescreen extends StatelessWidget {
               fontWeight: FontWeight.w600,
               color: Colors.black87)),
       trailing: Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
-      onTap: () {
-        // Handle navigation here
-      },
     );
   }
 
