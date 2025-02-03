@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Profilescreen extends StatelessWidget {
@@ -32,6 +33,23 @@ class Profilescreen extends StatelessWidget {
                 _buildMenuItem(Icons.privacy_tip_outlined, "Privacy Policy"),
                 _buildMenuItem(Icons.article_outlined, "Terms & Conditions"),
                 _buildMenuItem(Icons.help_outline, "Help Support"),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        fixedSize: Size.fromWidth(300),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadiusDirectional.circular(12)),
+                        backgroundColor: Color(0xff5B5BAD)),
+                    onPressed: () {
+                      _showPopuplogout(context);
+                    },
+                    child: Text(
+                        style: GoogleFonts.workSans(
+                            fontWeight: FontWeight.w600, color: Colors.white),
+                        'Logout'),
+                  ),
+                ),
               ],
             ),
           ),
@@ -129,17 +147,76 @@ class Profilescreen extends StatelessWidget {
     );
   }
 
-  /// Bottom Navigation Bar
-  Widget _buildBottomNavigationBar() {
-    return BottomNavigationBar(
-      selectedItemColor: Colors.blue[800],
-      unselectedItemColor: Colors.grey,
-      items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.chat_bubble_outline), label: ""),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: ""),
-      ],
+  void _showPopuplogout(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10), // Curved borders
+          ),
+          child: Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SvgPicture.asset(width: 300, 'assets/plane.svg'),
+                SizedBox(height: 40),
+                Text(
+                    style: GoogleFonts.workSans(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black),
+                    'Oh No, You Are Leavings'),
+                SizedBox(
+                  height: 15,
+                ),
+                Text(
+                    style: GoogleFonts.workSans(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff6C757D)),
+                    'Are you sure you want to logout'),
+                SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Cancel Button
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        // Close dialog
+                      },
+                      child: Text(
+                          style: GoogleFonts.workSans(
+                              fontWeight: FontWeight.w600, color: Colors.black),
+                          'No'),
+                    ),
+                    SizedBox(width: 20),
+                    // Apply Button
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xff3D56A2)),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text(
+                          style: GoogleFonts.workSans(
+                              fontWeight: FontWeight.w600, color: Colors.white),
+                          'Yes'),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 40,
+                )
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
