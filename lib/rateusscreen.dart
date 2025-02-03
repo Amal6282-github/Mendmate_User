@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Favorateservicepage extends StatelessWidget {
-  const Favorateservicepage({super.key});
+class Rateusscreen extends StatelessWidget {
+  const Rateusscreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class Favorateservicepage extends StatelessWidget {
         title: Text(
           style: GoogleFonts.workSans(
               fontSize: 19, fontWeight: FontWeight.w500, color: Colors.white),
-          'Favourite Services',
+          'Rate Us',
         ),
         backgroundColor: Color(0xff3D56A2),
       ),

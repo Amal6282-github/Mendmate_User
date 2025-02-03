@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_mendmate_user/changepasswordscreen.dart';
 import 'package:project_mendmate_user/editprofilescreen.dart';
+import 'package:project_mendmate_user/favorateservicepage.dart';
+import 'package:project_mendmate_user/helpsupport.dart';
+import 'package:project_mendmate_user/privacypolicyscreen.dart';
+import 'package:project_mendmate_user/rateusscreen.dart';
+import 'package:project_mendmate_user/termsconditionscreen.dart';
 
 class Profilescreen extends StatelessWidget {
   const Profilescreen({super.key});
@@ -27,16 +33,64 @@ class Profilescreen extends StatelessWidget {
                 _buildProfileHeader(context),
                 SizedBox(height: 20),
                 _buildSectionTitle("GENERAL"),
-                _buildMenuItem(Icons.lock, "Change Password", context),
-                _buildMenuItem(
-                    Icons.favorite_border, "Favourite Service", context),
-                _buildMenuItem(Icons.star_border, "Rate Us", context),
+                InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context1) => Changepasswordscreen()));
+                    },
+                    child:
+                        _buildMenuItem(Icons.lock, "Change Password", context)),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context1) => Favorateservicepage()));
+                  },
+                  child: _buildMenuItem(
+                      Icons.favorite_border, "Favourite Service", context),
+                ),
+                InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context1) => Rateusscreen()));
+                    },
+                    child:
+                        _buildMenuItem(Icons.star_border, "Rate Us", context)),
                 _buildSectionTitle("ABOUT APP"),
-                _buildMenuItem(
-                    Icons.privacy_tip_outlined, "Privacy Policy", context),
-                _buildMenuItem(
-                    Icons.article_outlined, "Terms & Conditions", context),
-                _buildMenuItem(Icons.help_outline, "Help Support", context),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context1) => Privacypolicyscreen()));
+                  },
+                  child: _buildMenuItem(
+                      Icons.privacy_tip_outlined, "Privacy Policy", context),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context1) => Termsconditionscreen()));
+                  },
+                  child: _buildMenuItem(
+                      Icons.article_outlined, "Terms & Conditions", context),
+                ),
+                InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context1) => Helpsupport()));
+                    },
+                    child: _buildMenuItem(
+                        Icons.help_outline, "Help Support", context)),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   child: ElevatedButton(
@@ -155,10 +209,6 @@ class Profilescreen extends StatelessWidget {
   /// Menu Item Widget (Each Row Item)
   Widget _buildMenuItem(IconData icon, String title, BuildContext context) {
     return ListTile(
-      onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context1) => Editprofilescreen()));
-      },
       leading: Icon(icon, color: Color(0xff6C757D)),
       title: Text(title,
           style: GoogleFonts.workSans(

@@ -81,13 +81,21 @@ class Bookingfilterpage extends StatelessWidget {
                       color: Color(0xffF6F7F9)),
                   child: DropdownButtonFormField<String>(
                     decoration: InputDecoration(
-                        labelStyle: GoogleFonts.workSans(),
-                        labelText: "Select City",
-                        filled: true,
-                        fillColor: Colors.grey[200], // Light background color
-                        contentPadding: EdgeInsets.symmetric(
-                            vertical: 12.0, horizontal: 16.0),
-                        border: OutlineInputBorder()),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xffF6F7F9)),
+                          borderRadius: BorderRadius.circular(8)),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Color(0xff9DAAD0), width: 2)),
+                      labelStyle: GoogleFonts.workSans(
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xff6C757D)),
+                      labelText: "Select City",
+                      filled: true,
+                      fillColor: Colors.grey[200], // Light background color
+                      contentPadding: EdgeInsets.symmetric(
+                          vertical: 12.0, horizontal: 16.0),
+                    ),
                     dropdownColor: Color(0xffF6F7F9),
                     items: [
                       'Thiruvananthapuram',
