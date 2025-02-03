@@ -101,7 +101,7 @@ class Chatscreen extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (context) => Chatboxscreen(
                                   imageUrl:
-                                      'https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg',
+                                      'https://randomuser.me/api/portraits/men/83.jpg',
                                   name: 'Bella Donnelly',
                                 ),
                               ));
@@ -112,7 +112,7 @@ class Chatscreen extends StatelessWidget {
                           time: '2:00 PM',
                           unreadCount: 3,
                           imageUrl:
-                              'https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg',
+                              'https://randomuser.me/api/portraits/men/83.jpg',
                         ),
                       ),
                       Chatscreencard(
@@ -121,7 +121,7 @@ class Chatscreen extends StatelessWidget {
                         time: '12:25 PM',
                         unreadCount: 4,
                         imageUrl:
-                            'https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg',
+                            'https://randomuser.me/api/portraits/women/90.jpg',
                       ),
                       Chatscreencard(
                         name: 'Bella Donnelly',
@@ -129,7 +129,7 @@ class Chatscreen extends StatelessWidget {
                         time: '2:00 PM',
                         unreadCount: 3,
                         imageUrl:
-                            'https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg',
+                            'https://randomuser.me/api/portraits/men/67.jpg',
                       ),
                       Chatscreencard(
                         name: 'Cooper McCullough',
@@ -137,7 +137,7 @@ class Chatscreen extends StatelessWidget {
                         time: '12:25 PM',
                         unreadCount: 4,
                         imageUrl:
-                            'https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg',
+                            'https://randomuser.me/api/portraits/women/66.jpg',
                       ),
                       Chatscreencard(
                         name: 'Cooper McCullough',
@@ -145,7 +145,7 @@ class Chatscreen extends StatelessWidget {
                         time: '12:25 PM',
                         unreadCount: 4,
                         imageUrl:
-                            'https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg',
+                            'https://randomuser.me/api/portraits/men/79.jpg',
                       ),
                       Chatscreencard(
                         name: 'Bella Donnelly',
@@ -153,7 +153,7 @@ class Chatscreen extends StatelessWidget {
                         time: '2:00 PM',
                         unreadCount: 3,
                         imageUrl:
-                            'https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg',
+                            'https://randomuser.me/api/portraits/women/81.jpg',
                       ),
                       Chatscreencard(
                         name: 'Cooper McCullough',
@@ -161,7 +161,7 @@ class Chatscreen extends StatelessWidget {
                         time: '12:25 PM',
                         unreadCount: 4,
                         imageUrl:
-                            'https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg',
+                            'https://randomuser.me/api/portraits/men/78.jpg',
                       ),
                       Chatscreencard(
                         name: 'Cooper McCullough',
@@ -169,7 +169,7 @@ class Chatscreen extends StatelessWidget {
                         time: '12:25 PM',
                         unreadCount: 4,
                         imageUrl:
-                            'https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg',
+                            'https://randomuser.me/api/portraits/men/94.jpg',
                       ),
                       Chatscreencard(
                         name: 'Bella Donnelly',
@@ -177,7 +177,7 @@ class Chatscreen extends StatelessWidget {
                         time: '2:00 PM',
                         unreadCount: 3,
                         imageUrl:
-                            'https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg',
+                            'https://randomuser.me/api/portraits/men/37.jpg',
                       ),
                       Chatscreencard(
                         name: 'Cooper McCullough',
@@ -185,7 +185,7 @@ class Chatscreen extends StatelessWidget {
                         time: '12:25 PM',
                         unreadCount: 4,
                         imageUrl:
-                            'https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg',
+                            'https://media.gettyimages.com/id/463164037/photo/las-vegas-nv-adult-film-actress-dani-daniels-attends-the-2014-avn-adult-entertainment-expo-at.jpg?s=612x612&w=0&k=20&c=Jcvvva9xFDAb0mMHE8Qg4Zw8IliEicLwFyVMTdoQKAA=',
                       ),
                     ],
                   ),

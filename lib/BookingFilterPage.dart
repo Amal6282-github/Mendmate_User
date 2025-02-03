@@ -81,14 +81,13 @@ class Bookingfilterpage extends StatelessWidget {
                       color: Color(0xffF6F7F9)),
                   child: DropdownButtonFormField<String>(
                     decoration: InputDecoration(
-                      labelStyle: GoogleFonts.workSans(),
-                      labelText: "Select City", filled: true,
-                      fillColor: Colors.grey[200], // Light background color
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: 12.0, horizontal: 16.0),
-
-                      border: OutlineInputBorder(),
-                    ),
+                        labelStyle: GoogleFonts.workSans(),
+                        labelText: "Select City",
+                        filled: true,
+                        fillColor: Colors.grey[200], // Light background color
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 12.0, horizontal: 16.0),
+                        border: OutlineInputBorder()),
                     dropdownColor: Color(0xffF6F7F9),
                     items: [
                       'Thiruvananthapuram',
@@ -277,13 +276,71 @@ void _showPopupDialog(BuildContext context) {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xff3D56A2)),
                     onPressed: () {
+                      Navigator.of(context).pop();
                       // Apply logic goes here
-                      Navigator.of(context).pop(); // Close dialog
+                      _showPopupsuccessfull(context);
                     },
                     child: Text(
                         style: GoogleFonts.workSans(
                             fontWeight: FontWeight.w600, color: Colors.white),
                         'Apply'),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}
+
+void _showPopupsuccessfull(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return Dialog(
+        backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10), // Curved borders
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(45.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SvgPicture.asset('assets/Check.svg'),
+              SizedBox(height: 40),
+              Text(
+                  style: GoogleFonts.workSans(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black),
+                  'Booking request Successfully submitted'),
+              SizedBox(
+                height: 15,
+              ),
+              Text(
+                  style: GoogleFonts.workSans(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff6C757D)),
+                  'Thankyou for Choosing Mendmate'),
+              SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xff3D56A2)),
+                    onPressed: () {
+                      Navigator.of(context).pop(); // Close dialog
+                    },
+                    child: Text(
+                        style: GoogleFonts.workSans(
+                            fontWeight: FontWeight.w600, color: Colors.white),
+                        'Back to Home'),
                   ),
                 ],
               ),
