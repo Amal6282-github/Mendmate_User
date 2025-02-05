@@ -6,6 +6,7 @@ import 'package:project_mendmate_user/changepasswordscreen.dart';
 import 'package:project_mendmate_user/editprofilescreen.dart';
 import 'package:project_mendmate_user/favorateservicepage.dart';
 import 'package:project_mendmate_user/helpsupport.dart';
+
 import 'package:project_mendmate_user/privacypolicyscreen.dart';
 import 'package:project_mendmate_user/rateusscreen.dart';
 import 'package:project_mendmate_user/termsconditionscreen.dart';
@@ -99,7 +100,7 @@ class Profilescreen extends StatelessWidget {
                         fixedSize: Size.fromWidth(300),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadiusDirectional.circular(12)),
-                        backgroundColor: Color(0xff5B5BAD)),
+                        backgroundColor: Color(0xff3C549F)),
                     onPressed: () {
                       _showPopuplogout(context);
                     },

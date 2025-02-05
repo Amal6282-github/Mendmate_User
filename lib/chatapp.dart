@@ -3,10 +3,6 @@ import 'package:flutter_chat_bubble/chat_bubble.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
-  runApp(ChatApp());
-}
-
 class ChatApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

@@ -115,77 +115,207 @@ class Chatscreen extends StatelessWidget {
                               'https://randomuser.me/api/portraits/men/83.jpg',
                         ),
                       ),
-                      Chatscreencard(
-                        name: 'Cooper McCullough',
-                        message: 'It is a long established',
-                        time: '12:25 PM',
-                        unreadCount: 4,
-                        imageUrl:
-                            'https://randomuser.me/api/portraits/women/90.jpg',
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Chatboxscreen(
+                                  imageUrl:
+                                      'https://randomuser.me/api/portraits/women/90.jpg',
+                                  name: 'Cooper McCullough',
+                                ),
+                              ));
+                        },
+                        child: Chatscreencard(
+                          name: 'Cooper McCullough',
+                          message: 'It is a long established',
+                          time: '12:25 PM',
+                          unreadCount: 4,
+                          imageUrl:
+                              'https://randomuser.me/api/portraits/women/90.jpg',
+                        ),
                       ),
-                      Chatscreencard(
-                        name: 'Bella Donnelly',
-                        message: 'It is a long established fact',
-                        time: '2:00 PM',
-                        unreadCount: 3,
-                        imageUrl:
-                            'https://randomuser.me/api/portraits/men/67.jpg',
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Chatboxscreen(
+                                  imageUrl:
+                                      'https://randomuser.me/api/portraits/men/67.jpg',
+                                  name: 'Bella Donnelly',
+                                ),
+                              ));
+                        },
+                        child: Chatscreencard(
+                          name: 'Bella Donnelly',
+                          message: 'It is a long established fact',
+                          time: '2:00 PM',
+                          unreadCount: 3,
+                          imageUrl:
+                              'https://randomuser.me/api/portraits/men/67.jpg',
+                        ),
                       ),
-                      Chatscreencard(
-                        name: 'Cooper McCullough',
-                        message: 'It is a long established',
-                        time: '12:25 PM',
-                        unreadCount: 4,
-                        imageUrl:
-                            'https://randomuser.me/api/portraits/women/66.jpg',
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Chatboxscreen(
+                                  imageUrl:
+                                      'https://randomuser.me/api/portraits/women/66.jpg',
+                                  name: 'Cooper McCullough',
+                                ),
+                              ));
+                        },
+                        child: Chatscreencard(
+                          name: 'Cooper McCullough',
+                          message: 'It is a long established',
+                          time: '12:25 PM',
+                          unreadCount: 4,
+                          imageUrl:
+                              'https://randomuser.me/api/portraits/women/66.jpg',
+                        ),
                       ),
-                      Chatscreencard(
-                        name: 'Cooper McCullough',
-                        message: 'It is a long established',
-                        time: '12:25 PM',
-                        unreadCount: 4,
-                        imageUrl:
-                            'https://randomuser.me/api/portraits/men/79.jpg',
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Chatboxscreen(
+                                  imageUrl:
+                                      'https://randomuser.me/api/portraits/women/66.jpg',
+                                  name: 'Cooper McCullough',
+                                ),
+                              ));
+                        },
+                        child: Chatscreencard(
+                          name: 'Cooper McCullough',
+                          message: 'It is a long established',
+                          time: '12:25 PM',
+                          unreadCount: 4,
+                          imageUrl:
+                              'https://randomuser.me/api/portraits/men/79.jpg',
+                        ),
                       ),
-                      Chatscreencard(
-                        name: 'Bella Donnelly',
-                        message: 'It is a long established fact',
-                        time: '2:00 PM',
-                        unreadCount: 3,
-                        imageUrl:
-                            'https://randomuser.me/api/portraits/women/81.jpg',
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Chatboxscreen(
+                                  imageUrl:
+                                      'https://randomuser.me/api/portraits/women/66.jpg',
+                                  name: 'Cooper McCullough',
+                                ),
+                              ));
+                        },
+                        child: Chatscreencard(
+                          name: 'Bella Donnelly',
+                          message: 'It is a long established fact',
+                          time: '2:00 PM',
+                          unreadCount: 3,
+                          imageUrl:
+                              'https://randomuser.me/api/portraits/women/81.jpg',
+                        ),
                       ),
-                      Chatscreencard(
-                        name: 'Cooper McCullough',
-                        message: 'It is a long established',
-                        time: '12:25 PM',
-                        unreadCount: 4,
-                        imageUrl:
-                            'https://randomuser.me/api/portraits/men/78.jpg',
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Chatboxscreen(
+                                  imageUrl:
+                                      'https://randomuser.me/api/portraits/women/66.jpg',
+                                  name: 'Cooper McCullough',
+                                ),
+                              ));
+                        },
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Chatboxscreen(
+                                    imageUrl:
+                                        'https://randomuser.me/api/portraits/women/66.jpg',
+                                    name: 'Cooper McCullough',
+                                  ),
+                                ));
+                          },
+                          child: Chatscreencard(
+                            name: 'Cooper McCullough',
+                            message: 'It is a long established',
+                            time: '12:25 PM',
+                            unreadCount: 4,
+                            imageUrl:
+                                'https://randomuser.me/api/portraits/men/78.jpg',
+                          ),
+                        ),
                       ),
-                      Chatscreencard(
-                        name: 'Cooper McCullough',
-                        message: 'It is a long established',
-                        time: '12:25 PM',
-                        unreadCount: 4,
-                        imageUrl:
-                            'https://randomuser.me/api/portraits/men/94.jpg',
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Chatboxscreen(
+                                  imageUrl:
+                                      'https://randomuser.me/api/portraits/women/66.jpg',
+                                  name: 'Cooper McCullough',
+                                ),
+                              ));
+                        },
+                        child: Chatscreencard(
+                          name: 'Cooper McCullough',
+                          message: 'It is a long established',
+                          time: '12:25 PM',
+                          unreadCount: 4,
+                          imageUrl:
+                              'https://randomuser.me/api/portraits/men/94.jpg',
+                        ),
                       ),
-                      Chatscreencard(
-                        name: 'Bella Donnelly',
-                        message: 'It is a long established fact',
-                        time: '2:00 PM',
-                        unreadCount: 3,
-                        imageUrl:
-                            'https://randomuser.me/api/portraits/men/37.jpg',
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Chatboxscreen(
+                                  imageUrl:
+                                      'https://randomuser.me/api/portraits/women/66.jpg',
+                                  name: 'Cooper McCullough',
+                                ),
+                              ));
+                        },
+                        child: Chatscreencard(
+                          name: 'Bella Donnelly',
+                          message: 'It is a long established fact',
+                          time: '2:00 PM',
+                          unreadCount: 3,
+                          imageUrl:
+                              'https://randomuser.me/api/portraits/men/37.jpg',
+                        ),
                       ),
-                      Chatscreencard(
-                        name: 'Cooper McCullough',
-                        message: 'It is a long established',
-                        time: '12:25 PM',
-                        unreadCount: 4,
-                        imageUrl:
-                            'https://media.gettyimages.com/id/463164037/photo/las-vegas-nv-adult-film-actress-dani-daniels-attends-the-2014-avn-adult-entertainment-expo-at.jpg?s=612x612&w=0&k=20&c=Jcvvva9xFDAb0mMHE8Qg4Zw8IliEicLwFyVMTdoQKAA=',
+                      InkResponse(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Chatboxscreen(
+                                  imageUrl:
+                                      'https://randomuser.me/api/portraits/women/66.jpg',
+                                  name: 'Cooper McCullough',
+                                ),
+                              ));
+                        },
+                        child: Chatscreencard(
+                          name: 'Cooper McCullough',
+                          message: 'It is a long established',
+                          time: '12:25 PM',
+                          unreadCount: 4,
+                          imageUrl:
+                              'https://media.gettyimages.com/id/463164037/photo/las-vegas-nv-adult-film-actress-dani-daniels-attends-the-2014-avn-adult-entertainment-expo-at.jpg?s=612x612&w=0&k=20&c=Jcvvva9xFDAb0mMHE8Qg4Zw8IliEicLwFyVMTdoQKAA=',
+                        ),
                       ),
                     ],
                   ),
