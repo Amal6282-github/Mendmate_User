@@ -22,22 +22,27 @@ class Attachfile extends StatelessWidget {
             children: [
               Expanded(
                   child: Container(
-                child: Row(
-                  children: [
-                    Text(
-                        style: GoogleFonts.workSans(
-                            color: Color(0xff9AA0A5),
-                            fontWeight: FontWeight.w500),
-                        title),
-                    SizedBox(
-                      width: 35,
-                    ),
-                    IconButton(
-                        onPressed: () async {
-                          await FilePicker.platform.pickFiles();
-                        },
-                        icon: Icon(color: Color(0xff9AA0A5), Icons.attach_file))
-                  ],
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  physics: NeverScrollableScrollPhysics(),
+                  child: Row(
+                    children: [
+                      Text(
+                          style: GoogleFonts.workSans(
+                              color: Color(0xff9AA0A5),
+                              fontWeight: FontWeight.w500),
+                          title),
+                      SizedBox(
+                        width: 30,
+                      ),
+                      IconButton(
+                          onPressed: () async {
+                            await FilePicker.platform.pickFiles();
+                          },
+                          icon:
+                              Icon(color: Color(0xff9AA0A5), Icons.attach_file))
+                    ],
+                  ),
                 ),
               )),
             ],

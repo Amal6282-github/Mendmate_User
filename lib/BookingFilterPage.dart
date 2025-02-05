@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:project_mendmate_user/filepickerbutton.dart';
+import 'package:project_mendmate_user/attachfile.dart';
 import 'package:project_mendmate_user/ratingfiltercard.dart';
 
 class Bookingfilterpage extends StatelessWidget {
@@ -208,7 +208,9 @@ class Bookingfilterpage extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: Filepickerbutton(),
+                child: Attachfile(
+                  title: '  For better assistance Attach File',
+                ),
               ),
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
