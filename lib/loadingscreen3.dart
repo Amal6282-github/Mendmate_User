@@ -61,8 +61,19 @@ class Loadingscreen3 extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) => Loadingscreen4()));
+                              PageRouteBuilder(
+                                transitionDuration: Duration(milliseconds: 5),
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) =>
+                                        Loadingscreen4(),
+                                transitionsBuilder: (context, animation,
+                                    secondaryAnimation, child) {
+                                  return FadeTransition(
+                                    opacity: animation,
+                                    child: child,
+                                  );
+                                },
+                              ));
                         },
                         child: Text(
                           'Skip',

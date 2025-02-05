@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_mendmate_user/;oginpage.dart';
 import 'package:project_mendmate_user/changepasswordscreen.dart';
 import 'package:project_mendmate_user/editprofilescreen.dart';
 import 'package:project_mendmate_user/favorateservicepage.dart';
@@ -272,7 +273,23 @@ class Profilescreen extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xff3D56A2)),
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          PageRouteBuilder(
+                            transitionDuration: Duration(milliseconds: 5),
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) =>
+                                    loginpage(),
+                            transitionsBuilder: (context, animation,
+                                secondaryAnimation, child) {
+                              return FadeTransition(
+                                opacity: animation,
+                                child: child,
+                              );
+                            },
+                          ),
+                          (route) => false,
+                        );
                       },
                       child: Text(
                           style: GoogleFonts.workSans(

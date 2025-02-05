@@ -23,7 +23,7 @@ class Loadingscreen1 extends StatelessWidget {
                   child: SvgPicture.asset('assets/Circleloading2.svg'),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 90),
+                  padding: const EdgeInsets.symmetric(vertical: 95),
                   child: SvgPicture.asset('assets/Grouploading1.svg'),
                 ),
               ],
@@ -61,8 +61,19 @@ class Loadingscreen1 extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) => Loadingscreen2()));
+                              PageRouteBuilder(
+                                transitionDuration: Duration(milliseconds: 5),
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) =>
+                                        Loadingscreen2(),
+                                transitionsBuilder: (context, animation,
+                                    secondaryAnimation, child) {
+                                  return FadeTransition(
+                                    opacity: animation,
+                                    child: child,
+                                  );
+                                },
+                              ));
                         },
                         child: Text(
                           'Get Started',

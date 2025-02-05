@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:project_mendmate_user/custombottomnavbar.dart';
+import 'package:project_mendmate_user/;oginpage.dart';
 
 class Loadingscreen4 extends StatelessWidget {
   const Loadingscreen4({super.key});
@@ -23,7 +23,7 @@ class Loadingscreen4 extends StatelessWidget {
                   child: SvgPicture.asset('assets/Circleloading2.svg'),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 100),
+                  padding: const EdgeInsets.symmetric(vertical: 93),
                   child: SvgPicture.asset('assets/Grouploading4.svg'),
                 ),
               ],
@@ -59,10 +59,23 @@ class Loadingscreen4 extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 180),
                     child: TextButton(
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Custombottomnavbar()));
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            PageRouteBuilder(
+                              transitionDuration: Duration(milliseconds: 5),
+                              pageBuilder:
+                                  (context, animation, secondaryAnimation) =>
+                                      loginpage(),
+                              transitionsBuilder: (context, animation,
+                                  secondaryAnimation, child) {
+                                return FadeTransition(
+                                  opacity: animation,
+                                  child: child,
+                                );
+                              },
+                            ),
+                            (route) => false,
+                          );
                         },
                         child: Text(
                           'Skip',
