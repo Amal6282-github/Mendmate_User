@@ -259,61 +259,65 @@ void _showPopupDialog(BuildContext context) {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10), // Curved borders
         ),
-        child: Padding(
-          padding: EdgeInsets.all(45.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SvgPicture.asset('assets/Check.svg'),
-              SizedBox(height: 40),
-              Text(
-                  style: GoogleFonts.workSans(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black),
-                  'Confirm Booking'),
-              SizedBox(
-                height: 15,
-              ),
-              Text(
-                  style: GoogleFonts.workSans(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff6C757D)),
-                  'Are you sure you want to confirm the booking'),
-              SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // Cancel Button
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop(); // Close dialog
-                    },
-                    child: Text(
-                        style: GoogleFonts.workSans(
-                            fontWeight: FontWeight.w600, color: Colors.black),
-                        'Cancel'),
-                  ),
-                  SizedBox(width: 20),
-                  // Apply Button
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xff3D56A2)),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      // Apply logic goes here
-                      _showPopupsuccessfull(context);
-                    },
-                    child: Text(
-                        style: GoogleFonts.workSans(
-                            fontWeight: FontWeight.w600, color: Colors.white),
-                        'Apply'),
-                  ),
-                ],
-              ),
-            ],
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          physics: NeverScrollableScrollPhysics(),
+          child: Padding(
+            padding: EdgeInsets.all(45.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SvgPicture.asset('assets/Check.svg'),
+                SizedBox(height: 40),
+                Text(
+                    style: GoogleFonts.workSans(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black),
+                    'Confirm Booking'),
+                SizedBox(
+                  height: 15,
+                ),
+                Text(
+                    style: GoogleFonts.workSans(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff6C757D)),
+                    'Are you sure you want to confirm the booking'),
+                SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Cancel Button
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop(); // Close dialog
+                      },
+                      child: Text(
+                          style: GoogleFonts.workSans(
+                              fontWeight: FontWeight.w600, color: Colors.black),
+                          'Cancel'),
+                    ),
+                    SizedBox(width: 20),
+                    // Apply Button
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xff3D56A2)),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        // Apply logic goes here
+                        _showPopupsuccessfull(context);
+                      },
+                      child: Text(
+                          style: GoogleFonts.workSans(
+                              fontWeight: FontWeight.w600, color: Colors.white),
+                          'Apply'),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       );
@@ -330,47 +334,51 @@ void _showPopupsuccessfull(BuildContext context) {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10), // Curved borders
         ),
-        child: Padding(
-          padding: EdgeInsets.all(45.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SvgPicture.asset('assets/Check.svg'),
-              SizedBox(height: 40),
-              Text(
-                  style: GoogleFonts.workSans(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black),
-                  'Booking request Successfully submitted'),
-              SizedBox(
-                height: 15,
-              ),
-              Text(
-                  style: GoogleFonts.workSans(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff6C757D)),
-                  'Thankyou for Choosing Mendmate'),
-              SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xff3D56A2)),
-                    onPressed: () {
-                      Navigator.of(context).pop(); // Close dialog
-                    },
-                    child: Text(
-                        style: GoogleFonts.workSans(
-                            fontWeight: FontWeight.w600, color: Colors.white),
-                        'Back to Home'),
-                  ),
-                ],
-              ),
-            ],
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          physics: NeverScrollableScrollPhysics(),
+          child: Padding(
+            padding: EdgeInsets.all(45.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SvgPicture.asset('assets/Check.svg'),
+                SizedBox(height: 40),
+                Text(
+                    style: GoogleFonts.workSans(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black),
+                    'Booking request Successfully submitted'),
+                SizedBox(
+                  height: 15,
+                ),
+                Text(
+                    style: GoogleFonts.workSans(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff6C757D)),
+                    'Thankyou for Choosing Mendmate'),
+                SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xff3D56A2)),
+                      onPressed: () {
+                        Navigator.of(context).pop(); // Close dialog
+                      },
+                      child: Text(
+                          style: GoogleFonts.workSans(
+                              fontWeight: FontWeight.w600, color: Colors.white),
+                          'Back to Home'),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       );
