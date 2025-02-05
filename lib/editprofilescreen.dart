@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_mendmate_user/attachfile.dart';
 import 'package:project_mendmate_user/changepasswordscreen.dart';
 import 'package:project_mendmate_user/editprofilescreencard.dart';
 
@@ -138,6 +139,69 @@ class Editprofilescreen extends StatelessWidget {
                       onChanged: (value) {
                         print("Selected City: $value");
                       },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 18),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width - 50,
+                      height: 53,
+                      decoration: BoxDecoration(
+                          color: Color(0xffF6F7F9),
+                          borderRadius: BorderRadiusDirectional.circular(8)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(3.0),
+                        child: Row(
+                          children: [
+                            Expanded(
+                                child: Container(
+                              child: TextField(
+                                enabled: false,
+                                decoration: InputDecoration(
+                                    labelStyle: GoogleFonts.workSans(
+                                        color: Color(0xff9AA0A5),
+                                        fontWeight: FontWeight.w500),
+                                    labelText:
+                                        '  670331 Morazha co-op Arts and science collage',
+                                    enabledBorder: InputBorder.none,
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Color(0xff9DAAD0),
+                                            width: 2)),
+                                    suffixIcon: Padding(
+                                      padding: const EdgeInsets.only(right: 10),
+                                      child: SvgPicture.asset(
+                                          color: Color(0xff9AA0A5),
+                                          'assets/marker (1).svg'),
+                                    ),
+                                    suffixIconConstraints: BoxConstraints(
+                                        maxHeight: 20, maxWidth: 40)),
+                              ),
+                            )),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Attachfile(
+                    title: '  Attach the License Document',
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          fixedSize: Size.fromWidth(300),
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadiusDirectional.circular(12)),
+                          backgroundColor: Color(0xff3C559F)),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text(
+                          style: GoogleFonts.workSans(
+                              fontWeight: FontWeight.w600, color: Colors.white),
+                          'Save'),
                     ),
                   ),
                 ],

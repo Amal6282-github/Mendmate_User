@@ -271,7 +271,7 @@ class Profilescreen extends StatelessWidget {
                     // Apply Button
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xff3D56A2)),
+                          backgroundColor: Color(0xff3C559F)),
                       onPressed: () {
                         Navigator.pushAndRemoveUntil(
                           context,

@@ -27,6 +27,7 @@ class Editprofilescreencard extends StatelessWidget {
                 child: TextField(
                   decoration: InputDecoration(
                       labelStyle: GoogleFonts.workSans(
+                          letterSpacing: 2,
                           color: Color(0xff9AA0A5),
                           fontWeight: FontWeight.w500),
                       labelText: title,
