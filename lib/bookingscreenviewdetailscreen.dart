@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_mendmate_user/checkstatuspage.dart';
+import 'package:project_mendmate_user/workerreviewcard.dart';
 
 class Bookingscreenviewdetailscreen extends StatelessWidget {
   final String status;
@@ -59,36 +61,20 @@ class Bookingscreenviewdetailscreen extends StatelessWidget {
               TextButton(
                 onPressed: () {
                   showModalBottomSheet(
-                    context: context,
-                    shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(20)),
-                    ),
-                    builder: (context) {
-                      return Container(
-                        width: MediaQuery.of(context).size.width,
-                        color: Colors.white,
-                        padding: const EdgeInsets.all(16),
-                        height: 370,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Text("Bottom Sheet",
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold)),
-                            const SizedBox(height: 10),
-                            const Text(
-                                "This is a bottom-up dialog box in Flutter."),
-                            const Spacer(),
-                            ElevatedButton(
-                              onPressed: () => Navigator.pop(context),
-                              child: const Text("Close"),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  );
+                      context: context,
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(20)),
+                      ),
+                      builder: (context) => Checkstatuspage(
+                            bookingid: bookingid,
+                            newbookingtime: time,
+                            newbookingdate: date,
+                            acceptbookingtime: '7.30 AM',
+                            acceptbookingdate: 'Feb 7',
+                            bookingcompletedtime: '10.30AM',
+                            bookingcompleteddate: 'Feb 9',
+                          ));
                 },
                 child: Text(
                   'Check Status',
@@ -128,8 +114,13 @@ class Bookingscreenviewdetailscreen extends StatelessWidget {
                             color: Color(0xff6C757D)),
                       ),
                       SizedBox(
-                        width: 150,
+                        width: 110,
                       ),
+                      Text('ID : #',
+                          style: GoogleFonts.workSans(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xff5F60B9))),
                       Text(bookingid,
                           style: GoogleFonts.workSans(
                               fontSize: 17,
@@ -399,6 +390,11 @@ class Bookingscreenviewdetailscreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20),
+                Workerreviewcard(rating: 3),
+                Workerreviewcard(rating: 3),
+                Workerreviewcard(rating: 3),
+                Workerreviewcard(rating: 3),
+                Workerreviewcard(rating: 3),
 
                 // Call & Chat Buttons
               ],
