@@ -6,6 +6,9 @@ import 'package:project_mendmate_user/workerreviewcard.dart';
 
 class Bookingscreenviewdetailscreen extends StatelessWidget {
   final String status;
+  final Color statuscolor;
+  final String totalprice;
+
   final double rating;
   final String serviceimg;
   final String date;
@@ -29,7 +32,9 @@ class Bookingscreenviewdetailscreen extends StatelessWidget {
       required this.workerlocation,
       required this.workername,
       required this.bookingid,
-      required this.workerimg});
+      required this.workerimg,
+      required this.statuscolor,
+      required this.totalprice});
 
   @override
   Widget build(BuildContext context) {
@@ -389,12 +394,190 @@ class Bookingscreenviewdetailscreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  'Payment Details',
+                  style: GoogleFonts.workSans(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+
+                // Customer Info Card
+                Card(
+                  color: Color(0xffF6F7F9),
+                  elevation: 2,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'ID',
+                              style: GoogleFonts.workSans(
+                                  fontSize: 15, fontWeight: FontWeight.w500),
+                            ),
+                            SizedBox(
+                              width: 180,
+                            ),
+                            Text('#',
+                                style: GoogleFonts.workSans(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(0xff5F60B9))),
+                            Text(bookingid,
+                                style: GoogleFonts.workSans(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xff5F60B9)))
+                          ],
+                        ),
+                        Divider(
+                          thickness: 2,
+                          color: Color(0xffEBEBEB),
+                        ),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          physics: NeverScrollableScrollPhysics(),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Method',
+                                style: GoogleFonts.workSans(
+                                    fontSize: 15, fontWeight: FontWeight.w500),
+                              ),
+                              SizedBox(
+                                width: 130,
+                              ),
+                              Container(
+                                width: 90,
+                                height: 40,
+                                child: DropdownButtonFormField<String>(
+                                  style: GoogleFonts.workSans(
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xff979DA4)),
+                                  decoration: InputDecoration(
+                                      enabled: false,
+                                      filled: true,
+                                      focusedBorder: InputBorder.none,
+                                      fillColor: Color(
+                                          0xffF6F7F9), // Light background color
+                                      contentPadding: EdgeInsets.symmetric(
+                                          vertical: 12.0, horizontal: 16.0),
+                                      border: InputBorder.none),
+                                  dropdownColor: Color(0xffF6F7F9),
+                                  items: [
+                                    'UPI',
+                                    'Cash',
+                                  ]
+                                      .map((method) => DropdownMenuItem(
+                                          value: method, child: Text(method)))
+                                      .toList(),
+                                  onChanged: (value) {
+                                    print("Selected method: $value");
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Divider(
+                          thickness: 2,
+                          color: Color(0xffEBEBEB),
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              'Status',
+                              style: GoogleFonts.workSans(
+                                  fontSize: 15, fontWeight: FontWeight.w500),
+                            ),
+                            SizedBox(
+                              width: 150,
+                            ),
+                            Text(status,
+                                style: GoogleFonts.workSans(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w700,
+                                    color: statuscolor))
+                          ],
+                        ),
+                        Divider(
+                          thickness: 2,
+                          color: Color(0xffEBEBEB),
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              'Total',
+                              style: GoogleFonts.workSans(
+                                  fontSize: 15, fontWeight: FontWeight.w500),
+                            ),
+                            SizedBox(
+                              width: 170,
+                            ),
+                            Icon(
+                              Icons.currency_rupee,
+                              size: 17,
+                            ),
+                            Text(
+                              totalprice,
+                              style: GoogleFonts.workSans(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xff979DA4)),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 SizedBox(height: 20),
-                Workerreviewcard(rating: 3),
-                Workerreviewcard(rating: 3),
-                Workerreviewcard(rating: 3),
-                Workerreviewcard(rating: 3),
-                Workerreviewcard(rating: 3),
+                Workerreviewcard(
+                  rating: 4.5,
+                  reviewdate: '01 Dec',
+                  reviewcustomername: 'Laura Walker',
+                  reviewtext:
+                      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet',
+                  reviewcustomerimgurl:
+                      'https://randomuser.me/api/portraits/men/78.jpg',
+                ),
+                Workerreviewcard(
+                  rating: 3.5,
+                  reviewdate: '03 Dec',
+                  reviewcustomername: 'Adriel Effertz',
+                  reviewtext:
+                      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet',
+                  reviewcustomerimgurl:
+                      'https://randomuser.me/api/portraits/men/94.jpg',
+                ),
+                Workerreviewcard(
+                  rating: 3.1,
+                  reviewdate: '09 Dec',
+                  reviewcustomername: 'Cielo Champlin',
+                  reviewtext:
+                      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet',
+                  reviewcustomerimgurl:
+                      'https://randomuser.me/api/portraits/women/66.jpg',
+                ),
+                Workerreviewcard(
+                  rating: 2.5,
+                  reviewdate: '05 Dec',
+                  reviewcustomername: 'Kailey Willms',
+                  reviewtext:
+                      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet',
+                  reviewcustomerimgurl:
+                      'https://media.gettyimages.com/id/463164037/photo/las-vegas-nv-adult-film-actress-dani-daniels-attends-the-2014-avn-adult-entertainment-expo-at.jpg?s=612x612&w=0&k=20&c=Jcvvva9xFDAb0mMHE8Qg4Zw8IliEicLwFyVMTdoQKAA=',
+                ),
 
                 // Call & Chat Buttons
               ],

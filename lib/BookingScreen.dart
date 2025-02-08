@@ -78,7 +78,7 @@ class Bookingscreen extends StatelessWidget {
                 Bookingscreencard(
                   serviceimagepath:
                       'assets/Contractor-Recommendation-1536x1024.jpg.webp',
-                  status: 'Cofirmed',
+                  status: 'Accepted',
                   statuscolor: Color(0xffFD6922),
                   bookingid: '102002',
                   servicename: 'Plumbing Work',
@@ -112,7 +112,7 @@ class Bookingscreen extends StatelessWidget {
                 ),
                 Bookingscreencard(
                   serviceimagepath: 'assets/Depositphotos_282950500_S.jpg',
-                  status: 'Cofirmed',
+                  status: 'Accepted',
                   statuscolor: Color(0xffFD6922),
                   bookingid: '102005',
                   servicename: 'CCTV Fixing',

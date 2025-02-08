@@ -212,6 +212,8 @@ class Bookingscreencard extends StatelessWidget {
                                     bookingid: bookingid,
                                     workerimg:
                                         'https://randomuser.me/api/portraits/women/66.jpg',
+                                    statuscolor: statuscolor,
+                                    totalprice: '289',
                                   )));
                     },
                     child: const Text('View Details',
