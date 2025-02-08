@@ -73,7 +73,7 @@ class Homepagebigcard extends StatelessWidget {
                                                   height: 13,
                                                   width: 10,
                                                   color: Color(0xffFFBD00),
-                                                  'assets/star.svg')
+                                                  'assets/Star 3.svg')
                                               : null,
                                         ),
                                       );

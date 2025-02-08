@@ -199,7 +199,20 @@ class Bookingscreencard extends StatelessWidget {
                           MaterialPageRoute(
                               builder: (context) =>
                                   Bookingscreenviewdetailscreen(
-                                      status: status)));
+                                    status: status,
+                                    rating: 4,
+                                    serviceimg: serviceimagepath,
+                                    date: date,
+                                    time: time,
+                                    servicename: servicename,
+                                    workeremail: 'Johndaoplumber@gmail.com',
+                                    workerlocation:
+                                        '670331 Kannur near savitha teatre',
+                                    workername: 'John Dao',
+                                    bookingid: bookingid,
+                                    workerimg:
+                                        'https://randomuser.me/api/portraits/women/66.jpg',
+                                  )));
                     },
                     child: const Text('View Details',
                         style: TextStyle(color: Colors.white)),
