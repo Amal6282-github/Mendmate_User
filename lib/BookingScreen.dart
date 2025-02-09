@@ -67,7 +67,6 @@ class Bookingscreen extends StatelessWidget {
                   serviceimagepath:
                       'assets/electrician-expertly-fixing-cctv-camera-generative-ai_431161-22009.jpg',
                   status: 'Pending',
-                  statuscolor: Color(0xffEA2F2F),
                   bookingid: '102001',
                   servicename: 'CCTV Fixing',
                   userlocation: '670331 Morazha co-op Arts and science collage',
@@ -79,7 +78,6 @@ class Bookingscreen extends StatelessWidget {
                   serviceimagepath:
                       'assets/Contractor-Recommendation-1536x1024.jpg.webp',
                   status: 'Accepted',
-                  statuscolor: Color(0xffFD6922),
                   bookingid: '102002',
                   servicename: 'Plumbing Work',
                   userlocation: '670331 Morazha co-op Arts and science collage',
@@ -91,7 +89,6 @@ class Bookingscreen extends StatelessWidget {
                     serviceimagepath:
                         'assets/When-can-I-return-to-dusty-environments-after-LASIK-Dr-Matthew-Russell-VSON-Laser-Vision-Specialists-Brisbane.webp',
                     status: 'Completed',
-                    statuscolor: Color(0xff3CAD5C),
                     bookingid: '102003',
                     servicename: 'Carpentry work',
                     userlocation:
@@ -102,7 +99,6 @@ class Bookingscreen extends StatelessWidget {
                 Bookingscreencard(
                   serviceimagepath: 'assets/pop-false-ceiling-work.jpg',
                   status: 'Pending',
-                  statuscolor: Color(0xffEA2F2F),
                   bookingid: '102004',
                   servicename: 'Cieling Work',
                   userlocation: '670331 Morazha co-op Arts and science collage',
@@ -113,7 +109,6 @@ class Bookingscreen extends StatelessWidget {
                 Bookingscreencard(
                   serviceimagepath: 'assets/Depositphotos_282950500_S.jpg',
                   status: 'Accepted',
-                  statuscolor: Color(0xffFD6922),
                   bookingid: '102005',
                   servicename: 'CCTV Fixing',
                   userlocation: '670331 Morazha co-op Arts and science collage',
@@ -125,7 +120,6 @@ class Bookingscreen extends StatelessWidget {
                   serviceimagepath:
                       'assets/electrician-expertly-fixing-cctv-camera-generative-ai_431161-22009.jpg',
                   status: 'Completed',
-                  statuscolor: Color(0xff3CAD5C),
                   bookingid: '102006',
                   servicename: 'CCTV Fixing',
                   userlocation: '670331 Morazha co-op Arts and science collage',
@@ -136,7 +130,6 @@ class Bookingscreen extends StatelessWidget {
                 Bookingscreencard(
                   serviceimagepath: 'assets/Ravinia_Electric.png.webp',
                   status: 'Pending',
-                  statuscolor: Color(0xffEA2F2F),
                   bookingid: '102007',
                   servicename: 'Electrical Work',
                   userlocation: '670331 Morazha co-op Arts and science collage',

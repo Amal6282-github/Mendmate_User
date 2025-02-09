@@ -79,6 +79,7 @@ class Bookingscreenviewdetailscreen extends StatelessWidget {
                             acceptbookingdate: 'Feb 7',
                             bookingcompletedtime: '10.30AM',
                             bookingcompleteddate: 'Feb 9',
+                            status: status,
                           ));
                 },
                 child: Text(
@@ -381,15 +382,18 @@ class Bookingscreenviewdetailscreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              'Rate Worker',
-                              style: GoogleFonts.workSans(
-                                  color: Color(0xff8586C8),
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600),
-                            ))
+                        Visibility(
+                          visible: status == "Completed",
+                          child: TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                'Rate Worker',
+                                style: GoogleFonts.workSans(
+                                    color: Color(0xff8586C8),
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600),
+                              )),
+                        )
                       ],
                     ),
                   ),
@@ -501,7 +505,7 @@ class Bookingscreenviewdetailscreen extends StatelessWidget {
                                   fontSize: 15, fontWeight: FontWeight.w500),
                             ),
                             SizedBox(
-                              width: 150,
+                              width: 130,
                             ),
                             Text(status,
                                 style: GoogleFonts.workSans(
@@ -542,6 +546,20 @@ class Bookingscreenviewdetailscreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20),
+                Divider(
+                  thickness: 1,
+                  color: Color(0xffEBEBEB),
+                ),
+                Text(
+                  'Reviews',
+                  style: GoogleFonts.workSans(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
                 Workerreviewcard(
                   rating: 4.5,
                   reviewdate: '01 Dec',

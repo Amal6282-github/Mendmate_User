@@ -10,6 +10,7 @@ class Checkstatuspage extends StatelessWidget {
   final String acceptbookingdate;
   final String bookingcompletedtime;
   final String bookingcompleteddate;
+  final String status;
 
   const Checkstatuspage(
       {super.key,
@@ -19,7 +20,8 @@ class Checkstatuspage extends StatelessWidget {
       required this.acceptbookingtime,
       required this.acceptbookingdate,
       required this.bookingcompletedtime,
-      required this.bookingcompleteddate});
+      required this.bookingcompleteddate,
+      required this.status});
 
   @override
   Widget build(BuildContext context) {
@@ -150,7 +152,7 @@ class Checkstatuspage extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  padding: EdgeInsets.symmetric(horizontal: 30),
                   child: Container(
                     alignment: Alignment.topCenter,
                     child: Column(
@@ -176,14 +178,20 @@ class Checkstatuspage extends StatelessWidget {
                         SizedBox(
                           height: 5,
                         ),
-                        SvgPicture.asset('assets/Line 1.svg',
-                            color: Color(0xff00968A)),
+                        SvgPicture.asset(
+                          'assets/Line 1.svg',
+                          color: status == "Completed"
+                              ? Color(0xff00968A)
+                              : Color(0xffB8BBBE),
+                        ),
                         SizedBox(
                           height: 5,
                         ),
                         SvgPicture.asset(
                           'assets/dot1.svg',
-                          color: Color(0xffFA6822),
+                          color: status == "Completed"
+                              ? Color(0xffFA6822)
+                              : Color(0xffB8BBBE),
                         ),
                       ],
                     ),

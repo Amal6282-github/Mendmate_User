@@ -6,7 +6,6 @@ import 'package:project_mendmate_user/bookingscreenviewdetailscreen.dart';
 class Bookingscreencard extends StatelessWidget {
   final String serviceimagepath;
   final String status;
-  final Color statuscolor;
   final String bookingid;
   final String servicename;
   final String userlocation;
@@ -16,7 +15,6 @@ class Bookingscreencard extends StatelessWidget {
   const Bookingscreencard(
       {super.key,
       required this.status,
-      required this.statuscolor,
       required this.bookingid,
       required this.servicename,
       required this.userlocation,
@@ -54,7 +52,11 @@ class Bookingscreencard extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8, vertical: 4),
                         decoration: BoxDecoration(
-                          color: statuscolor,
+                          color: (status == "Pending")
+                              ? Color(0xffEA2F2F)
+                              : (status == "Completed")
+                                  ? Color(0xff3CAD5C)
+                                  : Color(0xffFD6922),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Text(
@@ -181,55 +183,69 @@ class Bookingscreencard extends StatelessWidget {
 
             // Action Buttons
             Padding(
-              padding: const EdgeInsets.only(bottom: 20),
+              padding: const EdgeInsets.only(bottom: 20, right: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      fixedSize: Size(130, 30),
-                      backgroundColor: Color(0xff5F60B9),
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                  Visibility(
+                    visible: status == "Completed" || status == "Accepted",
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        fixedSize: Size(130, 30),
+                        backgroundColor: Color(0xff5F60B9),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                        ),
                       ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    Bookingscreenviewdetailscreen(
+                                      status: status,
+                                      rating: 4,
+                                      serviceimg: serviceimagepath,
+                                      date: date,
+                                      time: time,
+                                      servicename: servicename,
+                                      workeremail: 'Johndaoplumber@gmail.com',
+                                      workerlocation:
+                                          '670331 Kannur near savitha teatre',
+                                      workername: 'John Dao',
+                                      bookingid: bookingid,
+                                      workerimg:
+                                          'https://randomuser.me/api/portraits/women/66.jpg',
+                                      statuscolor: (status == "Pending")
+                                          ? Color(0xffEA2F2F)
+                                          : (status == "Completed")
+                                              ? Color(0xff3CAD5C)
+                                              : Color(0xffFD6922),
+                                      totalprice: '289',
+                                    )));
+                      },
+                      child: const Text('View Details',
+                          style: TextStyle(color: Colors.white)),
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  Bookingscreenviewdetailscreen(
-                                    status: status,
-                                    rating: 4,
-                                    serviceimg: serviceimagepath,
-                                    date: date,
-                                    time: time,
-                                    servicename: servicename,
-                                    workeremail: 'Johndaoplumber@gmail.com',
-                                    workerlocation:
-                                        '670331 Kannur near savitha teatre',
-                                    workername: 'John Dao',
-                                    bookingid: bookingid,
-                                    workerimg:
-                                        'https://randomuser.me/api/portraits/women/66.jpg',
-                                    statuscolor: statuscolor,
-                                    totalprice: '289',
-                                  )));
-                    },
-                    child: const Text('View Details',
-                        style: TextStyle(color: Colors.white)),
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      fixedSize: Size(130, 30),
-                      backgroundColor: Color(0xffF6F7F9),
+                      fixedSize: status == "Pending"
+                          ? Size(MediaQuery.of(context).size.width - 80, 30)
+                          : Size(130, 30),
+                      backgroundColor: status == "Pending"
+                          ? Color(0xff5F60B9)
+                          : Color(0xffF6F7F9),
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                       ),
                     ),
                     onPressed: () {},
-                    child: const Text('Cancel',
-                        style: TextStyle(color: Colors.black)),
+                    child: Text('Cancel',
+                        style: status == "Pending"
+                            ? TextStyle(color: Colors.white)
+                            : TextStyle(color: Colors.black)),
                   ),
                 ],
               ),
