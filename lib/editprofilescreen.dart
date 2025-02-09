@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:project_mendmate_user/attachfile.dart';
 import 'package:project_mendmate_user/changepasswordscreen.dart';
 import 'package:project_mendmate_user/editprofilescreencard.dart';
 
@@ -158,6 +157,7 @@ class Editprofilescreen extends StatelessWidget {
                               child: TextField(
                                 enabled: false,
                                 decoration: InputDecoration(
+                                    border: InputBorder.none,
                                     labelStyle: GoogleFonts.workSans(
                                         color: Color(0xff9AA0A5),
                                         fontWeight: FontWeight.w500),
@@ -182,9 +182,6 @@ class Editprofilescreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ),
-                  Attachfile(
-                    title: '  Attach the License Document',
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20),

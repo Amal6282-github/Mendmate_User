@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project_mendmate_user/checkstatuspage.dart';
+import 'package:project_mendmate_user/rateworkerpage.dart';
 import 'package:project_mendmate_user/workerreviewcard.dart';
 
 class Bookingscreenviewdetailscreen extends StatelessWidget {
@@ -19,22 +20,24 @@ class Bookingscreenviewdetailscreen extends StatelessWidget {
   final String workername;
   final String bookingid;
   final String workerimg;
+  final double newworkerrating = 1;
 
-  const Bookingscreenviewdetailscreen(
-      {super.key,
-      required this.status,
-      required this.rating,
-      required this.serviceimg,
-      required this.date,
-      required this.time,
-      required this.servicename,
-      required this.workeremail,
-      required this.workerlocation,
-      required this.workername,
-      required this.bookingid,
-      required this.workerimg,
-      required this.statuscolor,
-      required this.totalprice});
+  const Bookingscreenviewdetailscreen({
+    super.key,
+    required this.status,
+    required this.rating,
+    required this.serviceimg,
+    required this.date,
+    required this.time,
+    required this.servicename,
+    required this.workeremail,
+    required this.workerlocation,
+    required this.workername,
+    required this.bookingid,
+    required this.workerimg,
+    required this.statuscolor,
+    required this.totalprice,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -376,6 +379,9 @@ class Bookingscreenviewdetailscreen extends StatelessWidget {
                                   style: TextStyle(color: Colors.black)),
                               style: OutlinedButton.styleFrom(
                                   fixedSize: Size(130, 35),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8)),
+                                  backgroundColor: Colors.white,
                                   padding: EdgeInsets.symmetric(
                                       horizontal: 30, vertical: 12),
                                   side: BorderSide(color: Color(0xffF6F7F9))),
@@ -385,7 +391,16 @@ class Bookingscreenviewdetailscreen extends StatelessWidget {
                         Visibility(
                           visible: status == "Completed",
                           child: TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => Rateworkerpage(
+                                      rating: rating,
+                                      WorkerNewrating: 3.5,
+                                      newreviewcammand:
+                                          "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet."),
+                                );
+                              },
                               child: Text(
                                 'Rate Worker',
                                 style: GoogleFonts.workSans(
@@ -448,50 +463,46 @@ class Bookingscreenviewdetailscreen extends StatelessWidget {
                           thickness: 2,
                           color: Color(0xffEBEBEB),
                         ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          physics: NeverScrollableScrollPhysics(),
-                          child: Row(
-                            children: [
-                              Text(
-                                'Method',
+                        Row(
+                          children: [
+                            Text(
+                              'Method',
+                              style: GoogleFonts.workSans(
+                                  fontSize: 15, fontWeight: FontWeight.w500),
+                            ),
+                            SizedBox(
+                              width: 130,
+                            ),
+                            Container(
+                              width: 90,
+                              height: 40,
+                              child: DropdownButtonFormField<String>(
                                 style: GoogleFonts.workSans(
-                                    fontSize: 15, fontWeight: FontWeight.w500),
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(0xff979DA4)),
+                                decoration: InputDecoration(
+                                    enabled: false,
+                                    filled: true,
+                                    focusedBorder: InputBorder.none,
+                                    fillColor: Color(
+                                        0xffF6F7F9), // Light background color
+                                    contentPadding: EdgeInsets.symmetric(
+                                        vertical: 12.0, horizontal: 16.0),
+                                    border: InputBorder.none),
+                                dropdownColor: Color(0xffF6F7F9),
+                                items: [
+                                  'UPI',
+                                  'Cash',
+                                ]
+                                    .map((method) => DropdownMenuItem(
+                                        value: method, child: Text(method)))
+                                    .toList(),
+                                onChanged: (value) {
+                                  print("Selected method: $value");
+                                },
                               ),
-                              SizedBox(
-                                width: 130,
-                              ),
-                              Container(
-                                width: 90,
-                                height: 40,
-                                child: DropdownButtonFormField<String>(
-                                  style: GoogleFonts.workSans(
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xff979DA4)),
-                                  decoration: InputDecoration(
-                                      enabled: false,
-                                      filled: true,
-                                      focusedBorder: InputBorder.none,
-                                      fillColor: Color(
-                                          0xffF6F7F9), // Light background color
-                                      contentPadding: EdgeInsets.symmetric(
-                                          vertical: 12.0, horizontal: 16.0),
-                                      border: InputBorder.none),
-                                  dropdownColor: Color(0xffF6F7F9),
-                                  items: [
-                                    'UPI',
-                                    'Cash',
-                                  ]
-                                      .map((method) => DropdownMenuItem(
-                                          value: method, child: Text(method)))
-                                      .toList(),
-                                  onChanged: (value) {
-                                    print("Selected method: $value");
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                         Divider(
                           thickness: 2,
