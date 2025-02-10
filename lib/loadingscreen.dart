@@ -34,10 +34,13 @@ class _LoadingscreenState extends State<Loadingscreen> {
             scrollDirection: Axis.vertical,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 200, left: 30),
+                  padding: const EdgeInsets.only(top: 200),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
                           height: 100,
@@ -53,36 +56,41 @@ class _LoadingscreenState extends State<Loadingscreen> {
                     ],
                   ),
                 ),
-                Stack(children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 30),
-                    child: Lottie.asset(
-                      'assets/Animation - 1738678379122.json',
-                      width: 300,
-                      height: 300,
-                      repeat: true,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 150, left: 20),
-                    child: Lottie.asset(
-                      'assets/Animation - 1738679509919.json',
-                      width: 300,
-                      height: 300,
-                      repeat: false,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 320),
-                    child: Center(
-                      child: Text("Loading...",
-                          style: GoogleFonts.workSans(
-                              color: Color(0xff90979D),
-                              fontWeight: FontWeight.w500,
-                              fontSize: 18)),
-                    ),
-                  ),
-                ]),
+                Container(
+                  height: 300,
+                  child: Stack(
+                      fit: StackFit.loose,
+                      alignment: Alignment.center,
+                      children: [
+                        Lottie.asset(
+                          'assets/Animation - 1738678379122.json',
+                          width: 300,
+                          height: 300,
+                          repeat: true,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            top: 150,
+                          ),
+                          child: Lottie.asset(
+                            'assets/Animation - 1738679509919.json',
+                            width: 300,
+                            height: 300,
+                            repeat: false,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 200),
+                          child: Center(
+                            child: Text("Loading...",
+                                style: GoogleFonts.workSans(
+                                    color: Color(0xff90979D),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 18)),
+                          ),
+                        ),
+                      ]),
+                ),
               ],
             ),
           ),

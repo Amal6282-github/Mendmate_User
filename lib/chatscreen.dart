@@ -69,7 +69,7 @@ class Chatscreen extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: 500,
+                  height: MediaQuery.of(context).size.height - 280,
                   color: Colors.white,
                   child: ListView(
                     children: [

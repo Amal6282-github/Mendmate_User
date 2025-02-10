@@ -17,6 +17,7 @@ class Loadingscreen2 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Stack(
+              alignment: AlignmentDirectional.topEnd,
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 30),
@@ -28,35 +29,46 @@ class Loadingscreen2 extends StatelessWidget {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                'Find your service',
-                style: GoogleFonts.workSans(
-                    fontSize: 22,
-                    decoration: TextDecoration.none,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              child: Text(
-                'Find your service as per your preferences',
-                style: GoogleFonts.workSans(
-                    fontSize: 15,
-                    decoration: TextDecoration.none,
-                    color: Color(0xff9AA0A5),
-                    fontWeight: FontWeight.w600),
+            Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Text(
+                      'Find your service',
+                      style: GoogleFonts.workSans(
+                          fontSize: 22,
+                          decoration: TextDecoration.none,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 20),
+                    child: Text(
+                      'Find your service as per your preferences',
+                      style: GoogleFonts.workSans(
+                          fontSize: 15,
+                          decoration: TextDecoration.none,
+                          color: Color(0xff9AA0A5),
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ],
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
               child: Row(
                 children: [
-                  SvgPicture.asset('assets/Paginationloading2.svg'),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 180),
+                  Container(
+                      width: 70,
+                      child: SvgPicture.asset('assets/Paginationloading2.svg')),
+                  Expanded(child: SizedBox()),
+                  Container(
+                    width: 60,
                     child: TextButton(
                         onPressed: () {
                           Navigator.push(

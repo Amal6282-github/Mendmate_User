@@ -17,6 +17,7 @@ class Loadingscreen3 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Stack(
+              alignment: Alignment.topRight,
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 30),
@@ -54,9 +55,12 @@ class Loadingscreen3 extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
               child: Row(
                 children: [
-                  SvgPicture.asset('assets/Paginationloading3.svg'),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 180),
+                  Container(
+                      width: 70,
+                      child: SvgPicture.asset('assets/Paginationloading3.svg')),
+                  Expanded(child: SizedBox()),
+                  Container(
+                    width: 60,
                     child: TextButton(
                         onPressed: () {
                           Navigator.push(

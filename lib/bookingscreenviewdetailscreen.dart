@@ -64,7 +64,7 @@ class Bookingscreenviewdetailscreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                width: 70,
+                width: MediaQuery.of(context).size.width - 290,
               ),
               TextButton(
                 onPressed: () {
@@ -123,7 +123,7 @@ class Bookingscreenviewdetailscreen extends StatelessWidget {
                             color: Color(0xff6C757D)),
                       ),
                       SizedBox(
-                        width: 110,
+                        width: MediaQuery.of(context).size.width - 250,
                       ),
                       Text('ID : #',
                           style: GoogleFonts.workSans(
@@ -193,13 +193,13 @@ class Bookingscreenviewdetailscreen extends StatelessWidget {
                         ],
                       ),
                       SizedBox(
-                        width: 45,
+                        width: MediaQuery.of(context).size.width - 300,
                       ),
                       ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: Image.asset(
                           serviceimg, // Replace with actual image URL
-                          width: 90,
+                          width: 100,
                           height: 90,
                           fit: BoxFit.cover,
                         ),
