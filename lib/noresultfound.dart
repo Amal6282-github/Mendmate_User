@@ -19,6 +19,7 @@ class Noresultfound extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Stack(
+                alignment: AlignmentDirectional.topEnd,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 30),
