@@ -438,25 +438,29 @@ class Bookingscreenviewdetailscreen extends StatelessWidget {
                     child: Column(
                       children: [
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               'ID',
                               style: GoogleFonts.workSans(
                                   fontSize: 15, fontWeight: FontWeight.w500),
                             ),
-                            SizedBox(
-                              width: 180,
-                            ),
-                            Text('#',
-                                style: GoogleFonts.workSans(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xff5F60B9))),
-                            Text(bookingid,
-                                style: GoogleFonts.workSans(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w700,
-                                    color: Color(0xff5F60B9)))
+                            Container(
+                              child: Row(
+                                children: [
+                                  Text('#',
+                                      style: GoogleFonts.workSans(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xff5F60B9))),
+                                  Text(bookingid,
+                                      style: GoogleFonts.workSans(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w700,
+                                          color: Color(0xff5F60B9)))
+                                ],
+                              ),
+                            )
                           ],
                         ),
                         Divider(
@@ -464,14 +468,12 @@ class Bookingscreenviewdetailscreen extends StatelessWidget {
                           color: Color(0xffEBEBEB),
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               'Method',
                               style: GoogleFonts.workSans(
                                   fontSize: 15, fontWeight: FontWeight.w500),
-                            ),
-                            SizedBox(
-                              width: 130,
                             ),
                             Container(
                               width: 90,
@@ -509,14 +511,12 @@ class Bookingscreenviewdetailscreen extends StatelessWidget {
                           color: Color(0xffEBEBEB),
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               'Status',
                               style: GoogleFonts.workSans(
                                   fontSize: 15, fontWeight: FontWeight.w500),
-                            ),
-                            SizedBox(
-                              width: 130,
                             ),
                             Text(status,
                                 style: GoogleFonts.workSans(
@@ -530,25 +530,29 @@ class Bookingscreenviewdetailscreen extends StatelessWidget {
                           color: Color(0xffEBEBEB),
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               'Total',
                               style: GoogleFonts.workSans(
                                   fontSize: 15, fontWeight: FontWeight.w500),
                             ),
-                            SizedBox(
-                              width: 170,
-                            ),
-                            Icon(
-                              Icons.currency_rupee,
-                              size: 17,
-                            ),
-                            Text(
-                              totalprice,
-                              style: GoogleFonts.workSans(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xff979DA4)),
+                            Container(
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.currency_rupee,
+                                    size: 17,
+                                  ),
+                                  Text(
+                                    totalprice,
+                                    style: GoogleFonts.workSans(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(0xff979DA4)),
+                                  )
+                                ],
+                              ),
                             )
                           ],
                         ),
