@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:project_mendmate_user/;oginpage.dart';
 import 'package:project_mendmate_user/changepasswordscreen.dart';
 import 'package:project_mendmate_user/editprofilescreen.dart';
 import 'package:project_mendmate_user/favorateservicepage.dart';
 import 'package:project_mendmate_user/helpsupport.dart';
+import 'package:project_mendmate_user/loginpage.dart';
 
 import 'package:project_mendmate_user/privacypolicyscreen.dart';
 import 'package:project_mendmate_user/rateusscreen.dart';
@@ -280,7 +280,7 @@ class Profilescreen extends StatelessWidget {
                             transitionDuration: Duration(milliseconds: 5),
                             pageBuilder:
                                 (context, animation, secondaryAnimation) =>
-                                    loginpage(),
+                                    LoginPage(),
                             transitionsBuilder: (context, animation,
                                 secondaryAnimation, child) {
                               return FadeTransition(
