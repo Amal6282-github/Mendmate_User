@@ -2,7 +2,7 @@ name: project_mendmate_user
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -47,6 +47,9 @@ dependencies:
   permission_handler: ^11.4.0
   intl: ^0.20.2
   logger: ^2.5.0
+  flutter_bloc: ^9.0.0
+  bloc: ^9.0.0
+  meta: ^1.15.0
 
 dev_dependencies:
   flutter_test:

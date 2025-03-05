@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_mendmate_user/loginpage.dart';
+import 'package:project_mendmate_user/featuer/sign_in/login_screen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void checkLogin(BuildContext context) {
@@ -11,7 +11,7 @@ void checkLogin(BuildContext context) {
     if (!(currentUser != null)) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => LoginPage(),
+          builder: (context) => LoginScreen(),
         ),
       );
     }

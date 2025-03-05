@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:project_mendmate_user/loginpage.dart';
+import 'package:project_mendmate_user/featuer/sign_in/login_screen.dart';
 
 class Loadingscreen4 extends StatelessWidget {
   const Loadingscreen4({super.key});
@@ -69,7 +69,7 @@ class Loadingscreen4 extends StatelessWidget {
                               transitionDuration: Duration(milliseconds: 5),
                               pageBuilder:
                                   (context, animation, secondaryAnimation) =>
-                                      LoginPage(),
+                                      LoginScreen(),
                               transitionsBuilder: (context, animation,
                                   secondaryAnimation, child) {
                                 return FadeTransition(

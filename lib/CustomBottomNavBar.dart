@@ -5,7 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:project_mendmate_user/BookingScreen.dart';
 import 'package:project_mendmate_user/chatscreen.dart';
 import 'package:project_mendmate_user/homepage.dart';
-import 'package:project_mendmate_user/profilescreen.dart';
+
+import 'featuer/profile/profilescreen.dart';
 
 class Custombottomnavbar extends StatefulWidget {
   const Custombottomnavbar({super.key});

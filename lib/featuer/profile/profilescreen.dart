@@ -1,119 +1,166 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:project_mendmate_user/changepasswordscreen.dart';
-import 'package:project_mendmate_user/editprofilescreen.dart';
-import 'package:project_mendmate_user/favorateservicepage.dart';
-import 'package:project_mendmate_user/helpsupport.dart';
-import 'package:project_mendmate_user/loginpage.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-import 'package:project_mendmate_user/privacypolicyscreen.dart';
-import 'package:project_mendmate_user/rateusscreen.dart';
-import 'package:project_mendmate_user/termsconditionscreen.dart';
+import '../../changepasswordscreen.dart';
+import '../../common_widgets.dart/custom_alert_dialog.dart';
+import '../../editprofilescreen.dart';
+import '../../favorateservicepage.dart';
+import '../../helpsupport.dart';
+import '../../privacypolicyscreen.dart';
+import '../../rateusscreen.dart';
+import '../../termsconditionscreen.dart';
+import '../../util/check_login.dart';
+import '../../util/format_function.dart';
+import '../sign_in/login_screen.dart';
+import 'profile_bloc/profile_bloc.dart';
 
-class Profilescreen extends StatelessWidget {
+class Profilescreen extends StatefulWidget {
   const Profilescreen({super.key});
 
   @override
+  State<Profilescreen> createState() => _ProfilescreenState();
+}
+
+class _ProfilescreenState extends State<Profilescreen> {
+  final ProfileBloc _profileBloc = ProfileBloc();
+  Map _profile = {};
+
+  @override
+  void initState() {
+    getProfile();
+    checkLogin(context);
+    super.initState();
+  }
+
+  void getProfile() {
+    _profileBloc.add(GetAllProfileEvent());
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(
-              style: GoogleFonts.workSans(
-                  color: Colors.white, fontWeight: FontWeight.w500),
-              'Profile'),
-          backgroundColor: Color(0xff3D56A2),
-        ),
-        body: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          color: Colors.white,
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              children: [
-                _buildProfileHeader(context),
-                SizedBox(height: 20),
-                _buildSectionTitle("GENERAL"),
-                InkWell(
+    return BlocProvider.value(
+      value: _profileBloc,
+      child: BlocConsumer<ProfileBloc, ProfileState>(
+        listener: (context, state) {
+          if (state is ProfileFailureState) {
+            showDialog(
+              context: context,
+              builder: (context) => CustomAlertDialog(
+                title: 'Failure',
+                description: state.message,
+                primaryButton: 'Try Again',
+                onPrimaryPressed: () {
+                  getProfile();
+                  Navigator.pop(context);
+                },
+              ),
+            );
+          } else if (state is ProfileGetSuccessState) {
+            _profile = state.profile;
+            setState(() {});
+          } else if (state is ProfileSuccessState) {
+            getProfile();
+          }
+        },
+        builder: (context, state) {
+          return Scaffold(
+              body: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            color: Colors.white,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(
+                children: [
+                  _buildProfileHeader(context),
+                  SizedBox(height: 20),
+                  _buildSectionTitle("GENERAL"),
+                  InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context1) => Changepasswordscreen()));
+                      },
+                      child: _buildMenuItem(
+                          Icons.lock, "Change Password", context)),
+                  InkWell(
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context1) => Changepasswordscreen()));
-                    },
-                    child:
-                        _buildMenuItem(Icons.lock, "Change Password", context)),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context1) => Favorateservicepage()));
-                  },
-                  child: _buildMenuItem(
-                      Icons.favorite_border, "Favourite Service", context),
-                ),
-                InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context1) => Rateusscreen()));
-                    },
-                    child:
-                        _buildMenuItem(Icons.star_border, "Rate Us", context)),
-                _buildSectionTitle("ABOUT APP"),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context1) => Privacypolicyscreen()));
-                  },
-                  child: _buildMenuItem(
-                      Icons.privacy_tip_outlined, "Privacy Policy", context),
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context1) => Termsconditionscreen()));
-                  },
-                  child: _buildMenuItem(
-                      Icons.article_outlined, "Terms & Conditions", context),
-                ),
-                InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context1) => Helpsupport()));
+                              builder: (context1) => Favorateservicepage()));
                     },
                     child: _buildMenuItem(
-                        Icons.help_outline, "Help Support", context)),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        fixedSize: Size.fromWidth(300),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadiusDirectional.circular(12)),
-                        backgroundColor: Color(0xff3C549F)),
-                    onPressed: () {
-                      _showPopuplogout(context);
-                    },
-                    child: Text(
-                        style: GoogleFonts.workSans(
-                            fontWeight: FontWeight.w600, color: Colors.white),
-                        'Logout'),
+                        Icons.favorite_border, "Favourite Service", context),
                   ),
-                ),
-              ],
+                  InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context1) => Rateusscreen()));
+                      },
+                      child: _buildMenuItem(
+                          Icons.star_border, "Rate Us", context)),
+                  _buildSectionTitle("ABOUT APP"),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context1) => Privacypolicyscreen()));
+                    },
+                    child: _buildMenuItem(
+                        Icons.privacy_tip_outlined, "Privacy Policy", context),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context1) => Termsconditionscreen()));
+                    },
+                    child: _buildMenuItem(
+                        Icons.article_outlined, "Terms & Conditions", context),
+                  ),
+                  InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context1) => Helpsupport()));
+                      },
+                      child: _buildMenuItem(
+                          Icons.help_outline, "Help Support", context)),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          fixedSize: Size.fromWidth(300),
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadiusDirectional.circular(12)),
+                          backgroundColor: Color(0xff3C549F)),
+                      onPressed: () {
+                        _showPopuplogout(context);
+                      },
+                      child: Text(
+                          style: GoogleFonts.workSans(
+                              fontWeight: FontWeight.w600, color: Colors.white),
+                          'Logout'),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ));
+          ));
+        },
+      ),
+    );
   }
 
   Widget _buildProfileHeader(BuildContext context) {
@@ -163,23 +210,26 @@ class Profilescreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 10),
-          Text("Ashutosh Pandey",
+          Text(formatValue(_profile['name']),
               style: GoogleFonts.workSans(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
-                  color: Colors.black)),
+                  color: Colors.white)),
           SizedBox(
             height: 5,
           ),
           Text(
-            "Ashutosh@gmail.com",
+            formatValue(_profile['email']),
             style: GoogleFonts.workSans(
-                fontSize: 14,
-                color: Color(
-                  0xff6C757D,
-                ),
-                fontWeight: FontWeight.w500),
+                fontSize: 14, color: Colors.white, fontWeight: FontWeight.w500),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Text(
+            formatValue(_profile['phone']),
+            style: GoogleFonts.workSans(
+                fontSize: 14, color: Colors.white, fontWeight: FontWeight.w500),
           ),
         ],
       ),
@@ -248,11 +298,12 @@ class Profilescreen extends StatelessWidget {
                   height: 15,
                 ),
                 Text(
-                    style: GoogleFonts.workSans(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xff6C757D)),
-                    'Are you sure you want to logout'),
+                  style: GoogleFonts.workSans(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff6C757D)),
+                  'Are you sure you want to logout',
+                ),
                 SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -274,13 +325,14 @@ class Profilescreen extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xff3C559F)),
                       onPressed: () {
+                        Supabase.instance.client.auth.signOut();
                         Navigator.pushAndRemoveUntil(
                           context,
                           PageRouteBuilder(
                             transitionDuration: Duration(milliseconds: 5),
                             pageBuilder:
                                 (context, animation, secondaryAnimation) =>
-                                    LoginPage(),
+                                    LoginScreen(),
                             transitionsBuilder: (context, animation,
                                 secondaryAnimation, child) {
                               return FadeTransition(
@@ -293,9 +345,10 @@ class Profilescreen extends StatelessWidget {
                         );
                       },
                       child: Text(
-                          style: GoogleFonts.workSans(
-                              fontWeight: FontWeight.w600, color: Colors.white),
-                          'Yes'),
+                        style: GoogleFonts.workSans(
+                            fontWeight: FontWeight.w600, color: Colors.white),
+                        'Yes',
+                      ),
                     ),
                   ],
                 ),

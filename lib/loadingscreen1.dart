@@ -2,9 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project_mendmate_user/loadingscreen2.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-class Loadingscreen1 extends StatelessWidget {
+import 'CustomBottomNavBar.dart';
+
+class Loadingscreen1 extends StatefulWidget {
   const Loadingscreen1({super.key});
+
+  @override
+  State<Loadingscreen1> createState() => _Loadingscreen1State();
+}
+
+class _Loadingscreen1State extends State<Loadingscreen1> {
+  @override
+  void initState() {
+    Future.delayed(
+        const Duration(
+          milliseconds: 100,
+        ), () {
+      User? currentUser = Supabase.instance.client.auth.currentUser;
+      if (currentUser != null) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => Custombottomnavbar(),
+          ),
+        );
+      }
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
