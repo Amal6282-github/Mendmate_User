@@ -314,7 +314,7 @@ class Chatscreen extends StatelessWidget {
                           time: '12:25 PM',
                           unreadCount: 4,
                           imageUrl:
-                              'https://media.gettyimages.com/id/463164037/photo/las-vegas-nv-adult-film-actress-dani-daniels-attends-the-2014-avn-adult-entertainment-expo-at.jpg?s=612x612&w=0&k=20&c=Jcvvva9xFDAb0mMHE8Qg4Zw8IliEicLwFyVMTdoQKAA=',
+                              'https://randomuser.me/api/portraits/men/83.jpg',
                         ),
                       ),
                     ],
