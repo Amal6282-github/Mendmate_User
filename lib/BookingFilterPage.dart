@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project_mendmate_user/attachfile.dart';
+import 'package:project_mendmate_user/confirmbooking.dart';
 import 'package:project_mendmate_user/noresultfound.dart';
 import 'package:project_mendmate_user/ratingfiltercard.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-class Bookingfilterpage extends StatelessWidget {
+class Bookingfilterpage extends StatefulWidget {
   final String catergoryname;
   final SvgPicture serviceimg;
 
@@ -13,8 +15,22 @@ class Bookingfilterpage extends StatelessWidget {
       {super.key, required this.catergoryname, required this.serviceimg});
 
   @override
+  State<Bookingfilterpage> createState() => _BookingfilterpageState();
+}
+
+class _BookingfilterpageState extends State<Bookingfilterpage> {
+  final supabase = Supabase.instance.client;
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
+
+  String selectedCity = "Select City";
+  String status = "Pending";
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: false,
         leading: IconButton(
@@ -58,13 +74,13 @@ class Bookingfilterpage extends StatelessWidget {
                                 fontSize: 15,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.black),
-                            catergoryname),
+                            widget.catergoryname),
                         Padding(
                           padding: const EdgeInsets.only(left: 10),
                           child: Container(
                             height: 15,
                             width: 15,
-                            child: serviceimg,
+                            child: widget.serviceimg,
                           ),
                         )
                       ],
@@ -119,6 +135,9 @@ class Bookingfilterpage extends StatelessWidget {
                         .toList(),
                     onChanged: (value) {
                       print("Selected City: $value");
+                      setState(() {
+                        selectedCity = value!;
+                      });
                     },
                   ),
                 ),
@@ -150,6 +169,7 @@ class Bookingfilterpage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 10),
                     child: TextField(
+                      controller: phoneController,
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
                           labelStyle: GoogleFonts.workSans(
@@ -176,6 +196,7 @@ class Bookingfilterpage extends StatelessWidget {
                       borderRadius: BorderRadiusDirectional.circular(10),
                       color: Color(0xffF6F7F9)),
                   child: TextField(
+                    controller: addressController,
                     keyboardType: TextInputType.streetAddress,
                     decoration: InputDecoration(
                         labelStyle: GoogleFonts.workSans(
@@ -196,6 +217,7 @@ class Bookingfilterpage extends StatelessWidget {
                       borderRadius: BorderRadiusDirectional.circular(10),
                       color: Color(0xffF6F7F9)),
                   child: TextField(
+                    controller: descriptionController,
                     keyboardType: TextInputType.streetAddress,
                     decoration: InputDecoration(
                         labelStyle: GoogleFonts.workSans(
@@ -221,7 +243,18 @@ class Bookingfilterpage extends StatelessWidget {
                           Size(MediaQuery.of(context).size.width - 35, 40),
                       backgroundColor: Color(0xff3C549C)),
                   onPressed: () {
-                    _showPopupDialog(context);
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return Confirmbooking(
+                              category: widget.catergoryname,
+                              city: selectedCity,
+                              phone: phoneController.text,
+                              address: addressController.text,
+                              description: descriptionController.text,
+                              status: status,
+                              rating: "4.0");
+                        });
                   },
                   child: Text(
                     'Apply',
@@ -230,7 +263,7 @@ class Bookingfilterpage extends StatelessWidget {
               TextButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Noresultfound()));
+                      MaterialPageRoute(builder: (context) => noresultfound()));
                 },
                 child: Text(
                   "Click here to see the  no result found page",
@@ -248,140 +281,4 @@ class Bookingfilterpage extends StatelessWidget {
       ),
     );
   }
-}
-
-void _showPopupDialog(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return Dialog(
-        backgroundColor: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10), // Curved borders
-        ),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          physics: NeverScrollableScrollPhysics(),
-          child: Padding(
-            padding: EdgeInsets.all(45.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SvgPicture.asset('assets/Check.svg'),
-                SizedBox(height: 40),
-                Text(
-                    style: GoogleFonts.workSans(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black),
-                    'Confirm Booking'),
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                    style: GoogleFonts.workSans(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xff6C757D)),
-                    'Are you sure you want to confirm the booking'),
-                SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Cancel Button
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop(); // Close dialog
-                      },
-                      child: Text(
-                          style: GoogleFonts.workSans(
-                              fontWeight: FontWeight.w600, color: Colors.black),
-                          'Cancel'),
-                    ),
-                    SizedBox(width: 20),
-                    // Apply Button
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xff3D56A2)),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        // Apply logic goes here
-                        _showPopupsuccessfull(context);
-                      },
-                      child: Text(
-                          style: GoogleFonts.workSans(
-                              fontWeight: FontWeight.w600, color: Colors.white),
-                          'Apply'),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-      );
-    },
-  );
-}
-
-void _showPopupsuccessfull(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return Dialog(
-        backgroundColor: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10), // Curved borders
-        ),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          physics: NeverScrollableScrollPhysics(),
-          child: Padding(
-            padding: EdgeInsets.all(45.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SvgPicture.asset('assets/Check.svg'),
-                SizedBox(height: 40),
-                Text(
-                    style: GoogleFonts.workSans(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black),
-                    'Booking request Successfully submitted'),
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                    style: GoogleFonts.workSans(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xff6C757D)),
-                    'Thankyou for Choosing Mendmate'),
-                SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xff3D56A2)),
-                      onPressed: () {
-                        Navigator.of(context).pop(); // Close dialog
-                      },
-                      child: Text(
-                          style: GoogleFonts.workSans(
-                              fontWeight: FontWeight.w600, color: Colors.white),
-                          'Back to Home'),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-      );
-    },
-  );
 }

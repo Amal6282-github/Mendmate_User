@@ -165,14 +165,14 @@ class Homepage extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => Bookingfilterpage(
-                                        catergoryname: 'Electrician',
+                                        catergoryname: 'Electrical',
                                         serviceimg: SvgPicture.asset(
                                             'assets/plug-circle-bolt.svg'),
                                       ),
                                     ));
                               },
                               child: Homepagesmallcard(
-                                title: 'Electritian',
+                                title: 'Electrical',
                                 serviceicon: SvgPicture.asset(
                                     'assets/plug-circle-bolt.svg'),
                               ),
@@ -183,14 +183,14 @@ class Homepage extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => Bookingfilterpage(
-                                        catergoryname: 'Security',
+                                        catergoryname: 'CCTV',
                                         serviceimg: SvgPicture.asset(
                                             'assets/security.svg'),
                                       ),
                                     ));
                               },
                               child: Homepagesmallcard(
-                                title: 'Security',
+                                title: 'CCTV',
                                 serviceicon:
                                     SvgPicture.asset('assets/security.svg'),
                               ),
@@ -226,7 +226,7 @@ class Homepage extends StatelessWidget {
                                     ));
                               },
                               child: Homepagesmallcard(
-                                title: 'Plumber',
+                                title: 'Plumbing',
                                 serviceicon:
                                     SvgPicture.asset('assets/plumber.svg'),
                               ),
@@ -254,7 +254,7 @@ class Homepage extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => Bookingfilterpage(
-                                        catergoryname: 'Cieling ',
+                                        catergoryname: 'Cieling',
                                         serviceimg: SvgPicture.asset(
                                             'assets/people-roof.svg'),
                                       ),

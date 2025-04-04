@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Noresultfound extends StatelessWidget {
-  const Noresultfound({super.key});
+class noresultfound extends StatelessWidget {
+  const noresultfound({super.key});
 
   @override
   Widget build(BuildContext context) {

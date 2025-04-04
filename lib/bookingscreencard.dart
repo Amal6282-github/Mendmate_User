@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project_mendmate_user/bookingscreenviewdetailscreen.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-class Bookingscreencard extends StatelessWidget {
+class Bookingscreencard extends StatefulWidget {
   final String serviceimagepath;
   final String status;
   final String bookingid;
@@ -22,6 +25,39 @@ class Bookingscreencard extends StatelessWidget {
       required this.username,
       required this.serviceimagepath,
       required this.time});
+
+  @override
+  State<Bookingscreencard> createState() => _BookingscreencardState();
+}
+
+class _BookingscreencardState extends State<Bookingscreencard> {
+  final supabase = Supabase.instance.client;
+  bool isLoading = false;
+  Future<void> deleteBooking(String bookingId) async {
+    try {
+      final user = Supabase.instance.client.auth.currentUser;
+
+      if (user == null) {
+        print(" No user is logged in.");
+        return;
+      }
+      setState(() {
+        isLoading = true;
+      });
+      await Future.delayed(Duration(seconds: 2));
+      await supabase
+          .from('Booking') // Your table name
+          .delete()
+          .eq('id', bookingId); // Assuming 'id' is the primary key
+      print('Booking deleted successfully');
+    } catch (error) {
+      print('Error fetching: $error');
+    } finally {
+      setState(() {
+        isLoading = false; // Update your state here
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +79,7 @@ class Bookingscreencard extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(8)),
                 child: Stack(
                   children: [
-                    Image.asset(serviceimagepath,
+                    Image.network(widget.serviceimagepath,
                         width: 280, height: 150, fit: BoxFit.cover),
                     Positioned(
                       top: 10,
@@ -52,15 +88,15 @@ class Bookingscreencard extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8, vertical: 4),
                         decoration: BoxDecoration(
-                          color: (status == "Pending")
+                          color: (widget.status == "Pending")
                               ? Color(0xffEA2F2F)
-                              : (status == "Completed")
+                              : (widget.status == "Completed")
                                   ? Color(0xff3CAD5C)
                                   : Color(0xffFD6922),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Text(
-                          status,
+                          widget.status,
                           style: GoogleFonts.workSans(
                               color: Colors.white, fontWeight: FontWeight.w500),
                         ),
@@ -81,7 +117,7 @@ class Bookingscreencard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        servicename,
+                        widget.servicename,
                         style: GoogleFonts.workSans(
                             fontSize: 18, fontWeight: FontWeight.w600),
                       ),
@@ -101,7 +137,7 @@ class Bookingscreencard extends StatelessWidget {
                                   fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              bookingid,
+                              widget.bookingid,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold),
@@ -123,7 +159,7 @@ class Bookingscreencard extends StatelessWidget {
                       ),
                       SizedBox(width: 5),
                       Expanded(
-                        child: Text(userlocation,
+                        child: Text(widget.userlocation,
                             style: GoogleFonts.workSans(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w500,
@@ -141,7 +177,7 @@ class Bookingscreencard extends StatelessWidget {
                         height: 15,
                       ),
                       SizedBox(width: 5),
-                      Text(date,
+                      Text(widget.date,
                           style: GoogleFonts.workSans(
                               fontSize: 13,
                               fontWeight: FontWeight.w500,
@@ -151,7 +187,7 @@ class Bookingscreencard extends StatelessWidget {
                               fontSize: 13,
                               fontWeight: FontWeight.w500,
                               color: Color(0xff90989D))),
-                      Text(time,
+                      Text(widget.time,
                           style: GoogleFonts.workSans(
                               fontSize: 13,
                               fontWeight: FontWeight.w500,
@@ -169,7 +205,7 @@ class Bookingscreencard extends StatelessWidget {
                       ),
                       SizedBox(width: 5),
                       Text(
-                        username,
+                        widget.username,
                         style: GoogleFonts.workSans(
                             fontSize: 13,
                             fontWeight: FontWeight.w500,
@@ -189,7 +225,8 @@ class Bookingscreencard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Visibility(
-                    visible: status == "Completed" || status == "Accepted",
+                    visible: widget.status == "Completed" ||
+                        widget.status == "Accepted",
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         fixedSize: Size(130, 30),
@@ -204,22 +241,22 @@ class Bookingscreencard extends StatelessWidget {
                             MaterialPageRoute(
                                 builder: (context) =>
                                     Bookingscreenviewdetailscreen(
-                                      status: status,
+                                      status: widget.status,
                                       rating: 4,
-                                      serviceimg: serviceimagepath,
-                                      date: date,
-                                      time: time,
-                                      servicename: servicename,
+                                      serviceimg: widget.serviceimagepath,
+                                      date: widget.date,
+                                      time: widget.time,
+                                      servicename: widget.servicename,
                                       workeremail: 'Johndaoplumber@gmail.com',
                                       workerlocation:
                                           '670331 Kannur near savitha teatre',
                                       workername: 'John Dao',
-                                      bookingid: bookingid,
+                                      bookingid: widget.bookingid,
                                       workerimg:
                                           'https://randomuser.me/api/portraits/women/66.jpg',
-                                      statuscolor: (status == "Pending")
+                                      statuscolor: (widget.status == "Pending")
                                           ? Color(0xffEA2F2F)
-                                          : (status == "Completed")
+                                          : (widget.status == "Completed")
                                               ? Color(0xff3CAD5C)
                                               : Color(0xffFD6922),
                                       totalprice: '289',
@@ -231,21 +268,33 @@ class Bookingscreencard extends StatelessWidget {
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      fixedSize: status == "Pending"
+                      fixedSize: widget.status == "Pending"
                           ? Size(MediaQuery.of(context).size.width - 80, 30)
                           : Size(130, 30),
-                      backgroundColor: status == "Pending"
+                      backgroundColor: widget.status == "Pending"
                           ? Color(0xff5F60B9)
                           : Color(0xffF6F7F9),
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                       ),
                     ),
-                    onPressed: () {},
-                    child: Text('Cancel',
-                        style: status == "Pending"
-                            ? TextStyle(color: Colors.white)
-                            : TextStyle(color: Colors.black)),
+                    onPressed: () {
+                      if (isLoading != true) {
+                        deleteBooking(widget.bookingid);
+                      }
+                    },
+                    child: isLoading
+                        ? SizedBox(
+                            height: 20,
+                            width: 20,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                            ),
+                          )
+                        : Text('Cancel',
+                            style: widget.status == "Pending"
+                                ? TextStyle(color: Colors.white)
+                                : TextStyle(color: Colors.black)),
                   ),
                 ],
               ),

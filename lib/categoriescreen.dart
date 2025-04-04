@@ -3,11 +3,44 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project_mendmate_user/bookingfilterpage.dart';
 import 'package:project_mendmate_user/viewallcategorypagecard.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-class Categoriescreen extends StatelessWidget {
+class Categoriescreen extends StatefulWidget {
   const Categoriescreen({super.key});
 
   @override
+  State<Categoriescreen> createState() => _CategoriescreenState();
+}
+
+class _CategoriescreenState extends State<Categoriescreen> {
+  final supabase = Supabase.instance.client;
+  List<Map<String, dynamic>> categories = [];
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchCategories(); // Fetch categories initially
+    // Listen for real-time updates
+  }
+
+  Future<void> fetchCategories() async {
+    try {
+      final response = await supabase.from("service").select();
+      if (response.isNotEmpty) {
+        setState(() {
+          categories = response;
+        });
+      }
+    } catch (error) {
+      print("Error fetching categories: $error");
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -30,145 +63,38 @@ class Categoriescreen extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          child: GridView.count(
-            scrollDirection: Axis.vertical,
-            crossAxisCount: 2,
-            mainAxisSpacing: 4,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Bookingfilterpage(
-                          catergoryname: 'Electrician',
-                          serviceimg: SvgPicture.asset('assets/carpentry.svg'),
-                        ),
-                      ));
-                },
-                child: Viewallcategorypagecard(
-                  title: 'Electritian',
-                  serviceimg: AssetImage('assets/Ravinia_Electric.png.webp'),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Bookingfilterpage(
-                          catergoryname: 'Security',
-                          serviceimg: SvgPicture.asset('assets/carpentry.svg'),
-                        ),
-                      ));
-                },
-                child: Viewallcategorypagecard(
-                  title: 'Security',
-                  serviceimg:
-                      AssetImage('assets/Depositphotos_282950500_S.jpg'),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Bookingfilterpage(
-                          catergoryname: 'Painting',
-                          serviceimg: SvgPicture.asset('assets/painter.svg'),
-                        ),
-                      ));
-                },
-                child: Viewallcategorypagecard(
-                  title: 'Painting',
-                  serviceimg: AssetImage(
-                      'assets/Contractor-Recommendation-1536x1024.jpg.webp'),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Bookingfilterpage(
-                          catergoryname: 'Plumber',
-                          serviceimg: SvgPicture.asset('assets/plumber.svg'),
-                        ),
-                      ));
-                },
-                child: Viewallcategorypagecard(
-                  title: 'Plumber',
-                  serviceimg: AssetImage('assets/3-250x250.webp'),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Bookingfilterpage(
-                          catergoryname: 'Carpentry',
-                          serviceimg: SvgPicture.asset('assets/carpentry.svg'),
-                        ),
-                      ));
-                },
-                child: Viewallcategorypagecard(
-                  title: 'Carpentry',
-                  serviceimg: AssetImage(
-                      'assets/When-can-I-return-to-dusty-environments-after-LASIK-Dr-Matthew-Russell-VSON-Laser-Vision-Specialists-Brisbane.webp'),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Bookingfilterpage(
-                          catergoryname: 'Cieling',
-                          serviceimg: SvgPicture.asset('assets/carpentry.svg'),
-                        ),
-                      ));
-                },
-                child: Viewallcategorypagecard(
-                  title: 'Cieling',
-                  serviceimg: AssetImage('assets/pop-false-ceiling-work.jpg'),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Bookingfilterpage(
-                          catergoryname: 'Electrician',
-                          serviceimg: SvgPicture.asset('assets/painter.svg'),
-                        ),
-                      ));
-                },
-                child: Viewallcategorypagecard(
-                  title: 'Electritian',
-                  serviceimg: AssetImage('assets/Ravinia_Electric.png.webp'),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Bookingfilterpage(
-                          catergoryname: 'Security',
-                          serviceimg: SvgPicture.asset('assets/painter.svg'),
-                        ),
-                      ));
-                },
-                child: Viewallcategorypagecard(
-                  title: 'Security',
-                  serviceimg:
-                      AssetImage('assets/Depositphotos_282950500_S.jpg'),
-                ),
-              ),
-            ],
-          ),
+          child: isLoading
+              ? Center(
+                  child: CircularProgressIndicator()) // 🔄 Show loading spinner
+              : categories.isEmpty
+                  ? Center(
+                      child: Text("No categories available")) // 🚫 If no data
+                  : GridView.builder(
+                      padding: EdgeInsets.all(10),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2, // Number of columns
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                      ),
+                      itemCount: categories.length,
+                      itemBuilder: (context, index) {
+                        final service = categories[index];
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Bookingfilterpage(
+                                        catergoryname: service["name"],
+                                        serviceimg: SvgPicture.asset(
+                                            "assets/house-chimney (1).svg"))));
+                          },
+                          child: Viewallcategorypagecard(
+                              title: service["name"],
+                              serviceimg: NetworkImage(service["image_url"])),
+                        );
+                      },
+                    ),
         ),
       ),
     );

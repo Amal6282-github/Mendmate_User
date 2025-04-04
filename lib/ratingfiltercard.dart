@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:project_mendmate_user/globalvariable.dart';
 
 class RatingFilterCard extends StatefulWidget {
   @override
@@ -7,17 +9,11 @@ class RatingFilterCard extends StatefulWidget {
 }
 
 class _RatingFilterCardState extends State<RatingFilterCard> {
-  List<bool> selectedRatings = [
-    false,
-    false,
-    false,
-    false,
-    false
-  ]; // Checkbox states
-  List<double> ratings = [5.0, 4.0, 3.0, 2.0, 1.0]; // Rating values
+  // Rating values
 
   @override
   Widget build(BuildContext context) {
+    List<double> ratings = [5.0, 4.0, 3.0, 2.0, 1.0];
     return Card(
       color: Color(0xffF6F7F9),
       elevation: 3,
@@ -27,34 +23,38 @@ class _RatingFilterCardState extends State<RatingFilterCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Rating",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            SizedBox(height: 8),
+            Text(
+              "Rating",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
             Column(
               children: List.generate(ratings.length, (index) {
                 return CheckboxListTile(
-                  value: selectedRatings[index],
-                  onChanged: (value) {
+                  value: selectedRatingGlobal ==
+                      ratings[index], // Only one selected
+                  onChanged: (bool? value) {
                     setState(() {
-                      selectedRatings[index] = value!;
+                      selectedRatingGlobal =
+                          value == true ? ratings[index].toDouble() : null;
                     });
                   },
                   title: Row(
                     children: [
                       RatingBarIndicator(
                         rating: ratings[index],
-                        itemBuilder: (context, _) =>
-                            Icon(Icons.star, color: Colors.amber),
+                        itemBuilder: (context, _) => SvgPicture.asset(
+                          "assets/Star 3.svg",
+                        ),
                         itemCount: 5,
                         itemSize: 20.0,
-                        direction: Axis.horizontal,
                       ),
-                      Spacer(),
-                      Text(ratings[index].toString(),
-                          style: TextStyle(fontSize: 16)),
+                      SizedBox(width: 10),
+                      Text(ratings[index].toString()), // Show rating value
                     ],
                   ),
-                  controlAffinity: ListTileControlAffinity.leading,
+                  controlAffinity:
+                      ListTileControlAffinity.leading, // Checkbox on left
                 );
               }),
             ),
